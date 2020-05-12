@@ -31,7 +31,7 @@ namespace Test.Tests
         }
     }
 
-    public class TriangleBoundaryTest
+    public class TriangleBoundaryTest : Test
     {
         private static string TEST_FILE = "../../mydata/Triangle/Triangle_Boundary_Testcase.json";
         private static string TEST_RESULT = "../../mydata/Triangle/Triangle_Boundary_Result.json";
@@ -46,7 +46,7 @@ namespace Test.Tests
             }
         }
 
-        public void StartTest()
+        public override void StartTest()
         {
             Dictionary<string, Triangle> triangleDictionary = ReadJsonFile();
             Dictionary<string, string> resultDictionary = new Dictionary<string, string>();
