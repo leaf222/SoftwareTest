@@ -33,8 +33,8 @@ namespace Test.Tests
 
     public class TriangleBoundaryTest
     {
-        private static string TEST_FILE = "../../mydata/Triangle_Boundary_Testcase.json";
-        private static string TEST_RESULT = "../../mydata/Triangle_Boundary_Result.json";
+        private static string TEST_FILE = "../../mydata/Triangle/Triangle_Boundary_Testcase.json";
+        private static string TEST_RESULT = "../../mydata/Triangle/Triangle_Boundary_Result.json";
 
         private Dictionary<string, Triangle> ReadJsonFile()
         {
