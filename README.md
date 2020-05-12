@@ -1,7 +1,7 @@
 # SoftwareTest
 Softwaretest project.
 
-SoftwareTest/Test/Test/Tests下是测试类cs文件，命名为“某问题某方法Test”
+SoftwareTest/Test/Test/Tests下是测试类cs文件，命名为“某问题某方法Test”一个问题的所有测试类放到同一个文件夹里
 稍后我会写一个图表功能要用到的接口
 
 SoftwareTest/Test/Test/mydata下是测试用例excel表和测试数据文件、测试结果文件。
