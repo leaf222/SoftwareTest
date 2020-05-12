@@ -8,6 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+using Test.Tests;
+
+
 namespace Test
 {
     public partial class Form1 : Form
@@ -22,6 +25,7 @@ namespace Test
         {
             TestName.Items.Add("万年历");
             TestName.Items.Add("三角形");
+            TestName.Items.Add("销售问题");
             TestMethod.Items.Add("边界值");
             TestMethod.Items.Add("等价类");
         }
@@ -39,6 +43,21 @@ namespace Test
         private void Form1_Load(object sender, EventArgs e)
         {
             ComboBoxLoad();
+        }
+
+        //点击开始测试按钮，根据问题和方法选定测试类进行测试
+        private void StartButton_Click(object sender, EventArgs e)
+        {
+            if(TestName.SelectedItem == null || TestMethod.SelectedItem == null)
+            {
+                MessageBox.Show("请选择测试类和测试方法");
+            }
+            else if(TestName.SelectedItem.ToString().Equals("三角形") && TestMethod.SelectedItem.ToString().Equals("边界值"))
+            {
+                TriangleBoundaryTest t = new TriangleBoundaryTest();
+                t.StartTest();
+                MessageBox.Show("测试已经完成");
+            }
         }
     }
 }

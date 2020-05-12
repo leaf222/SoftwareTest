@@ -1,41 +1,41 @@
 {
-	"TestCase1":
+	"Testcase1":
 	{
 			"side1":"0",
 			"side2":"0",
 			"side3":"0"
 	},
-	"TestCase2":
+	"Testcase2":
 	{
 			"side1":"2147483647",
 			"side2":"2147483646",
 			"side3":"2147483645"
 	},
-	"TestCase3":
+	"Testcase3":
 	{
 			"side1":"2147483648",
 			"side2":"2147483649",
 			"side3":"2147483650"
 	},
-	"TestCase4":
+	"Testcase4":
 	{
 			"side1":"-1",
 			"side2":"-2",
 			"side3":"-3"
 	},
-	"TestCase5":
+	"Testcase5":
 	{
 			"side1":"3",
 			"side2":"4",
 			"side3":"5"
 	},
-	"TestCase6":
+	"Testcase6":
 	{
 			"side1":"-4",
 			"side2":"0",
 			"side3":"5"
 	},
-	"TestCase7":
+	"Testcase7":
 	{
 			"side1":"3.3",
 			"side2":"4.4",
