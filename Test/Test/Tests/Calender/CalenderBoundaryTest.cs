@@ -18,11 +18,11 @@ namespace Test.Tests
         public string result;
 
         public bool InputIllegal()
-        {
+        {   //日份范围
             if (type_day > 31 || type_day < 1)
             {
                 return true;
-            }
+            }//小月最大值
             else if (type_day == 31)
             {
                 switch (type_month)
@@ -38,7 +38,22 @@ namespace Test.Tests
                     case 11:
                         return true;
                 }
-            }
+            }//闰年判断
+            else if (type_month == 2 && type_day == 29)
+            {
+               int  four = type_year % 4;
+               int  hundred = type_year % 100;
+               int both = type_year % 400;
+                if (four==0 && hundred!=0)
+                {
+                    return false;
+                }
+                else if (both==0)
+                {
+                    return false;
+                }
+                return true;
+            }//月份范围
             else if (type_month > 12 || type_month < 1)
             {
                 return true;
