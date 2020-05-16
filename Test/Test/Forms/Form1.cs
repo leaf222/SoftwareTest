@@ -58,6 +58,12 @@ namespace Test
                 t.StartTest();
                 MessageBox.Show("测试已经完成");
             }
+            else if (TestName.SelectedItem.ToString().Equals("万年历") && TestMethod.SelectedItem.ToString().Equals("边界值"))
+            {
+                CalenderBoundaryTest t = new CalenderBoundaryTest();
+                t.StartTest();
+                MessageBox.Show("测试已经完成");
+            }
         }
     }
 }
