@@ -35,8 +35,10 @@ namespace Test.Tests
     {
         private static string TEST_FILE = "../../mydata/Triangle/Triangle_Boundary_Testcase.json";
         private static string TEST_RESULT = "../../mydata/Triangle/Triangle_Boundary_Result.json";
+        private static string EXPEXTED_TEST_RESULT = "../../mydata/Triangle/Triangle_Boundary_Expected_Result.json";
+        FileInfo file = new FileInfo("../../mydata/Triangle/Triangle_Boundary_Expected_Result.json");
 
-        private Dictionary<string, Triangle> ReadJsonFile()
+        private Dictionary<string, Triangle> ReadCaseJsonFile()
         {
             using (StreamReader r = new StreamReader(TEST_FILE))
             {
@@ -46,9 +48,24 @@ namespace Test.Tests
             }
         }
 
-        public override void StartTest()
+        private String ReadExpectedResultJsonFile()
         {
-            Dictionary<string, Triangle> triangleDictionary = ReadJsonFile();
+            FileInfo file = new FileInfo("../../mydata/Calender/Calender_Boundary_Expected_Result.json");
+            if (!file.Exists)
+            {
+                return null;
+            }
+            using (StreamReader r = new StreamReader(EXPEXTED_TEST_RESULT))
+            {
+                string json = r.ReadToEnd();
+                return json;
+            }
+        }
+
+        public override Boolean StartTest()
+        {
+            Dictionary<string, Triangle> triangleDictionary = ReadCaseJsonFile();
+            String expectedResult = ReadExpectedResultJsonFile();
             Dictionary<string, string> resultDictionary = new Dictionary<string, string>();
             foreach(KeyValuePair<string, Triangle> kvp in triangleDictionary)
             {
@@ -59,6 +76,11 @@ namespace Test.Tests
             {
                 w.WriteLine(result);
             }
+            if (expectedResult == null || !expectedResult.Equals(result))
+            {
+                return false;
+            }
+            return true;
         }
     }
 }

@@ -140,20 +140,40 @@ namespace Test.Tests
     {
         private static string TEST_FILE = "../../mydata/Calender/Calender_Boundary_Testcase.json";
         private static string TEST_RESULT = "../../mydata/Calender/Calender_Boundary_Result.json";
+        private static string EXPEXTED_TEST_RESULT= "../../mydata/Calender/Calender_Boundary_Expected_Result.json";
 
-        private Dictionary<string, CalenderType> ReadJsonFile()
+        private Dictionary<string, CalenderType> ReadCaseJsonFile()
         {
             using (StreamReader r = new StreamReader(TEST_FILE))
             {
                 string json = r.ReadToEnd();
+                if (json == null)
+                {
+                    return null;
+                }
                 Dictionary<string, CalenderType> CalenderTypeDic = JsonConvert.DeserializeObject<Dictionary<string, CalenderType>>(json);
                 return CalenderTypeDic;
             }
         }
 
-        public override void StartTest()
+        private String ReadExpectedResultJsonFile()
         {
-            Dictionary<string, CalenderType> CalenderTypeDictionary = ReadJsonFile();
+            FileInfo file = new FileInfo("../../mydata/Calender/Calender_Boundary_Expected_Result.json");
+            if (!file.Exists)
+            {
+                return null;
+            }
+            using (StreamReader r = new StreamReader(EXPEXTED_TEST_RESULT))
+            {
+                string json = r.ReadToEnd();
+                return json;
+            }
+        }
+
+        public override Boolean StartTest()
+        {
+            Dictionary<string, CalenderType> CalenderTypeDictionary = ReadCaseJsonFile();
+            String expectedResult = ReadExpectedResultJsonFile();
             Dictionary<string, string> resultDictionary = new Dictionary<string, string>();
             foreach (KeyValuePair<string, CalenderType> kvp in CalenderTypeDictionary)
             {
@@ -164,6 +184,11 @@ namespace Test.Tests
             {
                 w.WriteLine(result);
             }
+            if (expectedResult == null||!expectedResult.Equals(result))
+            {
+                return false;
+            }
+            return true;
         }
     }
 

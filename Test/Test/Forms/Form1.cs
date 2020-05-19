@@ -15,6 +15,10 @@ namespace Test
 {
     public partial class Form1 : Form
     {
+        public int TriangleBoundaryTestNum = 0;
+        public int TriangleBoundarySuccessNum = 0;
+        public int CalenderBoundaryTestNum = 0;
+        public int CalenderBoundarySuccessNum = 0;
         public Form1()
         {
             InitializeComponent();
@@ -55,14 +59,33 @@ namespace Test
             else if(TestName.SelectedItem.ToString().Equals("三角形") && TestMethod.SelectedItem.ToString().Equals("边界值"))
             {
                 TriangleBoundaryTest t = new TriangleBoundaryTest();
-                t.StartTest();
-                MessageBox.Show("测试已经完成");
+                Boolean result=t.StartTest();
+                TriangleBoundaryTestNum++;
+                if (result)
+                {
+                    TriangleBoundarySuccessNum++;
+                    MessageBox.Show("测试成功");
+                }
+                else
+                {
+                    MessageBox.Show("测试失败");
+                }
+                
             }
             else if (TestName.SelectedItem.ToString().Equals("万年历") && TestMethod.SelectedItem.ToString().Equals("边界值"))
             {
                 CalenderBoundaryTest t = new CalenderBoundaryTest();
-                t.StartTest();
-                MessageBox.Show("测试已经完成");
+                Boolean result = t.StartTest();
+                CalenderBoundaryTestNum++;
+                if (result)
+                {
+                    CalenderBoundarySuccessNum++;
+                    MessageBox.Show("测试成功");
+                }
+                else
+                {
+                    MessageBox.Show("测试失败");
+                }
             }
         }
     }

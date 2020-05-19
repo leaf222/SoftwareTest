@@ -9,6 +9,6 @@ namespace Test.Tests
     //所有测试类的基类
     public abstract class Test
     {
-        public abstract void StartTest();
+        public abstract Boolean StartTest();
     }
 }

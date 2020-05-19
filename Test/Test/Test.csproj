@@ -58,6 +58,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tests\Calender\CalenderBoundaryTest.cs" />
     <Compile Include="Tests\Test.cs" />
     <Compile Include="Tests\Triangle\TriangleBoundaryTest.cs" />
     <EmbeddedResource Include="Forms\Form1.resx">
