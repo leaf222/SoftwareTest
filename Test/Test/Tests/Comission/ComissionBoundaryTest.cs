@@ -27,6 +27,7 @@ namespace Test.Tests
 			//17.1;17.2;17.3
 			else if (host > 70 || monitor > 80 || peripheral > 90)
 			{
+				commision = -1;
 				flag = 0;
 				// print("销售超过库存")
 			}
