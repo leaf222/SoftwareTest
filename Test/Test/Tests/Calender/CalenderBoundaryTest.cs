@@ -41,14 +41,14 @@ namespace Test.Tests
             }//闰年判断
             else if (type_month == 2 && type_day == 29)
             {
-               int  four = type_year % 4;
-               int  hundred = type_year % 100;
-               int both = type_year % 400;
-                if (four==0 && hundred!=0)
+                int four = type_year % 4;
+                int hundred = type_year % 100;
+                int both = type_year % 400;
+                if (four == 0 && hundred != 0)
                 {
                     return false;
                 }
-                else if (both==0)
+                else if (both == 0)
                 {
                     return false;
                 }
@@ -59,17 +59,18 @@ namespace Test.Tests
                 return true;
             }
 
-            return false;   
+            return false;
         }
         public string TheNextDay()
         {
-            
+
             int result_year = type_year;
             int result_month = type_month;
             int result_day = type_day + 1;
             bool illegal = InputIllegal();
             //判断输入是否合法
-            if(illegal){
+            if (illegal)
+            {
                 result = "您的输入非法";
                 return result;
             }
@@ -80,7 +81,7 @@ namespace Test.Tests
                 result_day = 1;
 
             }
-            else  if (type_day == 30)
+            else if (type_day == 30)
             {
                 switch (type_month)
                 {
@@ -102,12 +103,12 @@ namespace Test.Tests
                         break;
                 }
             }
-           else if (type_month == 2)
+            else if (type_month == 2)
             {
                 switch (type_day)
                 {
                     case 29:
-                        result_month =type_month+ 1;
+                        result_month = type_month + 1;
                         result_day = 1;
                         break;
                     case 28:
@@ -120,15 +121,15 @@ namespace Test.Tests
             }
 
             //根据月来判断月和年
-           else if (type_day == 31 && type_month == 12)
+            else if (type_day == 31 && type_month == 12)
             {
                 result_day = 1;
                 result_month = 1;
-                result_year= type_year + 1;
+                result_year = type_year + 1;
 
             }
 
-            result = Convert.ToString(result_year) +"."+ Convert.ToString(result_month) + "." + Convert.ToString(result_day);
+            result = Convert.ToString(result_year) + "." + Convert.ToString(result_month) + "." + Convert.ToString(result_day);
 
             return result;
         }
@@ -138,76 +139,32 @@ namespace Test.Tests
 
     public class CalenderBoundaryTest : Test
     {
-        private static string BOUNDARY_TEST_FILE = "../../mydata/Calender/Calender_Boundary_Testcase.json";
-        private static string BOUNDARY_TEST_RESULT = "../../mydata/Calender/Calender_Boundary_Result.json";
-        private static string BOUNDARY_EXPEXTED_TEST_RESULT = "../../mydata/Calender/Calender_Boundary_Expected_Result.json";
+        private static string TEST_FILE = "../../mydata/Calender/Calender_Boundary_Testcase.json";
+        private static string TEST_RESULT = "../../mydata/Calender/Calender_Boundary_Result.json";
 
-        private static string EquaValCla_TEST_FILE = "../../mydata/Calender/Calender_EquaValCla_Testcase.json";
-        private static string EquaValCla_TEST_RESULT = "../../mydata/Calender/Calender_EquaValCla_Result.json";
-        private static string EquaValCla_EXPEXTED_TEST_RESULT = "../../mydata/Calender/Calender_EquaValCla_Expected_Result.json";
-
-        private Dictionary<string, CalenderType> ReadCaseJsonFile(String testFile)
+        private Dictionary<string, CalenderType> ReadJsonFile()
         {
-            using (StreamReader r = new StreamReader(testFile))
+            using (StreamReader r = new StreamReader(TEST_FILE))
             {
                 string json = r.ReadToEnd();
-                if (json == null)
-                {
-                    return null;
-                }
                 Dictionary<string, CalenderType> CalenderTypeDic = JsonConvert.DeserializeObject<Dictionary<string, CalenderType>>(json);
                 return CalenderTypeDic;
             }
         }
 
-        private String ReadExpectedResultJsonFile(String expectedResFile)
+        public override void StartTest()
         {
-            FileInfo file = new FileInfo(expectedResFile);
-            if (!file.Exists)
+            Dictionary<string, CalenderType> CalenderTypeDictionary = ReadJsonFile();
+            Dictionary<string, string> resultDictionary = new Dictionary<string, string>();
+            foreach (KeyValuePair<string, CalenderType> kvp in CalenderTypeDictionary)
             {
-                return null;
+                resultDictionary.Add(kvp.Key, kvp.Value.TheNextDay());
             }
-            using (StreamReader r = new StreamReader(expectedResFile))
+            string result = JsonConvert.SerializeObject(resultDictionary);
+            using (StreamWriter w = new StreamWriter(TEST_RESULT))
             {
-                string json = r.ReadToEnd();
-                return json;
+                w.WriteLine(result);
             }
-        }
-
-        public override Boolean StartTest(int method)
-        {
-            String testFile;
-            String resFile;
-            String expectedResFile;
-            if (method == 1)
-            {
-                testFile = BOUNDARY_TEST_FILE;
-                resFile = BOUNDARY_TEST_RESULT;
-                expectedResFile = BOUNDARY_EXPEXTED_TEST_RESULT;
-            }
-            else
-            {
-                testFile = EquaValCla_TEST_FILE;
-                resFile = EquaValCla_TEST_RESULT;
-                expectedResFile = EquaValCla_EXPEXTED_TEST_RESULT;
-            }
-                Dictionary<string, CalenderType> CalenderTypeDictionary = ReadCaseJsonFile(testFile);
-                String expectedResult = ReadExpectedResultJsonFile(expectedResFile);
-                Dictionary<string, string> resultDictionary = new Dictionary<string, string>();
-                foreach (KeyValuePair<string, CalenderType> kvp in CalenderTypeDictionary)
-                {
-                    resultDictionary.Add(kvp.Key, kvp.Value.TheNextDay());
-                }
-                string result = JsonConvert.SerializeObject(resultDictionary);
-                using (StreamWriter w = new StreamWriter(resFile))
-                {
-                    w.WriteLine(result);
-                }
-                if (expectedResult == null || !expectedResult.Equals(result))
-                {
-                    return false;
-                }
-                return true;
         }
     }
 
