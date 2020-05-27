@@ -33,12 +33,17 @@ namespace Test.Tests
 
     public class TriangleBoundaryTest : Test
     {
-        private static string TEST_FILE = "../../mydata/Triangle/Triangle_Boundary_Testcase.json";
-        private static string TEST_RESULT = "../../mydata/Triangle/Triangle_Boundary_Result.json";
+        private static string BOUNDARY_TEST_FILE = "../../mydata/Triangle/Triangle_Boundary_Testcase.json";
+        private static string BOUNDARY_TEST_RESULT = "../../mydata/Triangle/Triangle_Boundary_Result.json";
+        private static string BOUNDARY_EXPEXTED_TEST_RESULT = "../../mydata/Triangle/Triangle_Boundary_Expected_Result.json";
 
-        private Dictionary<string, Triangle> ReadJsonFile()
+        private static string EquaValCla_TEST_FILE = "../../mydata/Triangle/Triangle_EquaValCla_Testcase.json";
+        private static string EquaValCla_TEST_RESULT = "../../mydata/Triangle/Triangle_EquaValCla_Result.json";
+        private static string EquaValCla_EXPEXTED_TEST_RESULT = "../../mydata/Triangle/Triangle_EquaValCla_Expected_Result.json";
+
+        private Dictionary<string, Triangle> ReadCaseJsonFile(String testFile)
         {
-            using (StreamReader r = new StreamReader(TEST_FILE))
+            using (StreamReader r = new StreamReader(testFile))
             {
                 string json = r.ReadToEnd();
                 Dictionary<string, Triangle> triangleDic = JsonConvert.DeserializeObject<Dictionary<string, Triangle>>(json);
@@ -46,19 +51,54 @@ namespace Test.Tests
             }
         }
 
-        public override void StartTest()
+        private String ReadExpectedResultJsonFile(String expectedResFile)
         {
-            Dictionary<string, Triangle> triangleDictionary = ReadJsonFile();
+            FileInfo file = new FileInfo(expectedResFile);
+            if (!file.Exists)
+            {
+                return null;
+            }
+            using (StreamReader r = new StreamReader(expectedResFile))
+            {
+                string json = r.ReadToEnd();
+                return json;
+            }
+        }
+
+        public override Boolean StartTest(int method)
+        {
+            String testFile;
+            String resFile;
+            String expectedResFile;
+            if (method == 1)
+            {
+                testFile = BOUNDARY_TEST_FILE;
+                resFile = BOUNDARY_TEST_RESULT;
+                expectedResFile = BOUNDARY_EXPEXTED_TEST_RESULT;
+            }
+            else
+            {
+                testFile = EquaValCla_TEST_FILE;
+                resFile = EquaValCla_TEST_RESULT;
+                expectedResFile = EquaValCla_EXPEXTED_TEST_RESULT;
+            }
+            Dictionary<string, Triangle> triangleDictionary = ReadCaseJsonFile(testFile);
+            String expectedResult = ReadExpectedResultJsonFile(expectedResFile);
             Dictionary<string, string> resultDictionary = new Dictionary<string, string>();
             foreach(KeyValuePair<string, Triangle> kvp in triangleDictionary)
             {
                 resultDictionary.Add(kvp.Key, kvp.Value.CheckTriangle());
             }
             string result = JsonConvert.SerializeObject(resultDictionary);
-            using (StreamWriter w = new StreamWriter(TEST_RESULT))
+            using (StreamWriter w = new StreamWriter(resFile))
             {
                 w.WriteLine(result);
             }
+            if (expectedResult == null || !expectedResult.Equals(result))
+            {
+                return false;
+            }
+            return true;
         }
     }
 }
