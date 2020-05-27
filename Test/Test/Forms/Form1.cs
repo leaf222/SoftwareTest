@@ -15,10 +15,22 @@ namespace Test
 {
     public partial class Form1 : Form
     {
-        public int TriangleBoundaryTestNum = 0;
-        public int TriangleBoundarySuccessNum = 0;
-        public int CalenderBoundaryTestNum = 0;
-        public int CalenderBoundarySuccessNum = 0;
+        //测试方法
+        public int testMethod = 0;
+        //边界值
+        public int triangleBoundaryTestNum = 0;
+        public int triangleBoundarySuccessNum = 0;
+        public int calenderBoundaryTestNum = 0;
+        public int calenderBoundarySuccessNum = 0;
+        public int comissionBoundaryTestNum = 0;
+        public int comissionBoundarySuccessNum = 0;
+        //等价类
+        public int triangleEquaValClaTestNum = 0;
+        public int triangleEquaValClaSuccessNum = 0;
+        public int calenderEquaValClaTestNum = 0;
+        public int calenderEquaValClaSuccessNum = 0;
+        public int comissionEquaValClaTestNum = 0;
+        public int comissionEquaValClaSuccessNum = 0;
         public Form1()
         {
             InitializeComponent();
@@ -52,39 +64,120 @@ namespace Test
         //点击开始测试按钮，根据问题和方法选定测试类进行测试
         private void StartButton_Click(object sender, EventArgs e)
         {
-            if(TestName.SelectedItem == null || TestMethod.SelectedItem == null)
+            if (TestName.SelectedItem == null || TestMethod.SelectedItem == null)
             {
                 MessageBox.Show("请选择测试类和测试方法");
+                return;
             }
-            else if(TestName.SelectedItem.ToString().Equals("三角形") && TestMethod.SelectedItem.ToString().Equals("边界值"))
+
+            else if (TestMethod.SelectedItem.ToString().Equals("边界值"))
             {
-                TriangleBoundaryTest t = new TriangleBoundaryTest();
-                Boolean result=t.StartTest();
-                TriangleBoundaryTestNum++;
-                if (result)
-                {
-                    TriangleBoundarySuccessNum++;
-                    MessageBox.Show("测试成功");
-                }
-                else
-                {
-                    MessageBox.Show("测试失败");
-                }
-                
+                testMethod = 1;
             }
-            else if (TestName.SelectedItem.ToString().Equals("万年历") && TestMethod.SelectedItem.ToString().Equals("边界值"))
+            else if (TestMethod.SelectedItem.ToString().Equals("等价类"))
+            {
+                testMethod = 2;
+            }
+            else
+            {
+                MessageBox.Show("错误");
+                return;
+            }
+            if (TestName.SelectedItem.ToString().Equals("三角形"))
+            {
+                {
+                    TriangleBoundaryTest t = new TriangleBoundaryTest();
+                    Boolean result = t.StartTest(testMethod);
+                    if (testMethod == 1)
+                    {
+                        triangleBoundaryTestNum++;
+                        if (result)
+                        {
+                            triangleBoundarySuccessNum++;
+                            MessageBox.Show("测试成功");
+                        }
+                        else
+                        {
+                            MessageBox.Show("测试失败");
+                        }
+                    }
+                    else
+                    {
+                        triangleEquaValClaTestNum++;
+                        if (result)
+                        {
+                            triangleEquaValClaSuccessNum++;
+                            MessageBox.Show("测试成功");
+                        }
+                        else
+                        {
+                            MessageBox.Show("测试失败");
+                        }
+                    }
+
+                }
+            }
+            else if (TestName.SelectedItem.ToString().Equals("万年历"))
             {
                 CalenderBoundaryTest t = new CalenderBoundaryTest();
-                Boolean result = t.StartTest();
-                CalenderBoundaryTestNum++;
-                if (result)
+                Boolean result = t.StartTest(testMethod);
+                if (testMethod == 1)
                 {
-                    CalenderBoundarySuccessNum++;
-                    MessageBox.Show("测试成功");
+                    calenderBoundaryTestNum++;
+                    if (result)
+                    {
+                        calenderBoundarySuccessNum++;
+                        MessageBox.Show("测试成功");
+                    }
+                    else
+                    {
+                        MessageBox.Show("测试失败");
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("测试失败");
+                    calenderEquaValClaTestNum++;
+                    if (result)
+                    {
+                        calenderEquaValClaSuccessNum++;
+                        MessageBox.Show("测试成功");
+                    }
+                    else
+                    {
+                        MessageBox.Show("测试失败");
+                    }
+                }
+            }
+            else if (TestName.SelectedItem.ToString().Equals("销售问题"))
+            {
+                ComissionBoundaryTest t = new ComissionBoundaryTest();
+                Boolean result = t.StartTest(testMethod);
+
+                if (testMethod == 1)
+                {
+                    comissionBoundaryTestNum++;
+                    if (result)
+                    {
+                        comissionBoundarySuccessNum++;
+                        MessageBox.Show("测试成功");
+                    }
+                    else
+                    {
+                        MessageBox.Show("测试失败");
+                    }
+                }
+                else
+                {
+                    comissionEquaValClaTestNum++;
+                    if (result)
+                    {
+                        comissionEquaValClaSuccessNum++;
+                        MessageBox.Show("测试成功");
+                    }
+                    else
+                    {
+                        MessageBox.Show("测试失败");
+                    }
                 }
             }
         }

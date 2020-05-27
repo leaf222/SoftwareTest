@@ -1,0 +1,8 @@
+{
+	"Testcase1":
+	{
+			"host":"10",
+			"monitor":"10",
+			"peripheral":"10"
+    }
+}

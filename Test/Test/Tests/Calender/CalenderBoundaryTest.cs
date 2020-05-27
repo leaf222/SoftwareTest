@@ -138,13 +138,17 @@ namespace Test.Tests
 
     public class CalenderBoundaryTest : Test
     {
-        private static string TEST_FILE = "../../mydata/Calender/Calender_Boundary_Testcase.json";
-        private static string TEST_RESULT = "../../mydata/Calender/Calender_Boundary_Result.json";
-        private static string EXPEXTED_TEST_RESULT= "../../mydata/Calender/Calender_Boundary_Expected_Result.json";
+        private static string BOUNDARY_TEST_FILE = "../../mydata/Calender/Calender_Boundary_Testcase.json";
+        private static string BOUNDARY_TEST_RESULT = "../../mydata/Calender/Calender_Boundary_Result.json";
+        private static string BOUNDARY_EXPEXTED_TEST_RESULT = "../../mydata/Calender/Calender_Boundary_Expected_Result.json";
 
-        private Dictionary<string, CalenderType> ReadCaseJsonFile()
+        private static string EquaValCla_TEST_FILE = "../../mydata/Calender/Calender_EquaValCla_Testcase.json";
+        private static string EquaValCla_TEST_RESULT = "../../mydata/Calender/Calender_EquaValCla_Result.json";
+        private static string EquaValCla_EXPEXTED_TEST_RESULT = "../../mydata/Calender/Calender_EquaValCla_Expected_Result.json";
+
+        private Dictionary<string, CalenderType> ReadCaseJsonFile(String testFile)
         {
-            using (StreamReader r = new StreamReader(TEST_FILE))
+            using (StreamReader r = new StreamReader(testFile))
             {
                 string json = r.ReadToEnd();
                 if (json == null)
@@ -156,39 +160,54 @@ namespace Test.Tests
             }
         }
 
-        private String ReadExpectedResultJsonFile()
+        private String ReadExpectedResultJsonFile(String expectedResFile)
         {
-            FileInfo file = new FileInfo("../../mydata/Calender/Calender_Boundary_Expected_Result.json");
+            FileInfo file = new FileInfo(expectedResFile);
             if (!file.Exists)
             {
                 return null;
             }
-            using (StreamReader r = new StreamReader(EXPEXTED_TEST_RESULT))
+            using (StreamReader r = new StreamReader(expectedResFile))
             {
                 string json = r.ReadToEnd();
                 return json;
             }
         }
 
-        public override Boolean StartTest()
+        public override Boolean StartTest(int method)
         {
-            Dictionary<string, CalenderType> CalenderTypeDictionary = ReadCaseJsonFile();
-            String expectedResult = ReadExpectedResultJsonFile();
-            Dictionary<string, string> resultDictionary = new Dictionary<string, string>();
-            foreach (KeyValuePair<string, CalenderType> kvp in CalenderTypeDictionary)
+            String testFile;
+            String resFile;
+            String expectedResFile;
+            if (method == 1)
             {
-                resultDictionary.Add(kvp.Key, kvp.Value.TheNextDay());
+                testFile = BOUNDARY_TEST_FILE;
+                resFile = BOUNDARY_TEST_RESULT;
+                expectedResFile = BOUNDARY_EXPEXTED_TEST_RESULT;
             }
-            string result = JsonConvert.SerializeObject(resultDictionary);
-            using (StreamWriter w = new StreamWriter(TEST_RESULT))
+            else
             {
-                w.WriteLine(result);
+                testFile = EquaValCla_TEST_FILE;
+                resFile = EquaValCla_TEST_RESULT;
+                expectedResFile = EquaValCla_EXPEXTED_TEST_RESULT;
             }
-            if (expectedResult == null||!expectedResult.Equals(result))
-            {
-                return false;
-            }
-            return true;
+                Dictionary<string, CalenderType> CalenderTypeDictionary = ReadCaseJsonFile(testFile);
+                String expectedResult = ReadExpectedResultJsonFile(expectedResFile);
+                Dictionary<string, string> resultDictionary = new Dictionary<string, string>();
+                foreach (KeyValuePair<string, CalenderType> kvp in CalenderTypeDictionary)
+                {
+                    resultDictionary.Add(kvp.Key, kvp.Value.TheNextDay());
+                }
+                string result = JsonConvert.SerializeObject(resultDictionary);
+                using (StreamWriter w = new StreamWriter(resFile))
+                {
+                    w.WriteLine(result);
+                }
+                if (expectedResult == null || !expectedResult.Equals(result))
+                {
+                    return false;
+                }
+                return true;
         }
     }
 
