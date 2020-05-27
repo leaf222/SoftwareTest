@@ -59,5 +59,10 @@ namespace Test
                 MessageBox.Show("测试已经完成");
             }
         }
+
+        private void chart1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
