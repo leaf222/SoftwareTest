@@ -5,29 +5,133 @@ using Newtonsoft.Json;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Text.RegularExpressions;
+
 
 namespace Test.Tests
 {
+
     class Triangle
     {
-        public float side1 { get; set; }
-        public float side2 { get; set; }
-        public float side3 { get; set; }
+        public string side1 { get; set; }
+        public string side2 { get; set; }
+        public string side3 { get; set; }
         public string CheckTriangle()
         {
-            if (side1 == side2 && side2 == side3)
+            Dictionary<String, int> result = new Dictionary<String, int>();
+            result.Add("等腰", 0);
+            result.Add("等边", 0);
+            result.Add("直角", 0);
+            result.Add("钝角", 0);
+            result.Add("锐角", 0);
+            if (CheckInput(side1, side2, side3))
             {
-                return "是等边三角形";
+                var edge1 = int.Parse(side1);
+                var edge2 = int.Parse(side2);
+                var edge3 = int.Parse(side3);
+                int[] Numbers = new int[] { edge1, edge2, edge3 };
+                double powSum = Math.Pow(edge1, 2) + Math.Pow(edge2, 2) + Math.Pow(edge3, 2);
+                int max = Numbers.Max();
+                if (CheckTriangle(edge1, edge2, edge3))
+                {
+                    //三角形
+                    result["等边"] = CheckEquicrural(edge1, edge2, edge3) ? 1 : 0;
+                    result["等腰"] = CheckEquilateral(edge1, edge2, edge3) ? 1 : 0;
+                    result["直角"] = CheckRightAngle(powSum, max) ? 1 : 0;
+                    result["钝角"] = CheckObtuseAngle(powSum, max) ? 1 : 0;
+                    result["锐角"] = CheckAcuteAngle(powSum, max) ? 1 : 0;
+                    string resultTip = (result["等腰"] == 1 && result["等边"] == 0) ? "等腰" : "";
+                    resultTip += result["等边"] == 1 ? "等边" : "";
+                    resultTip += result["直角"] == 1 ? "直角" : "";
+                    resultTip += result["钝角"] == 1 ? "钝角" : "";
+                    resultTip += result["锐角"] == 1 ? "锐角" : "";
+                    resultTip += "三角形";
+                    return resultTip;
+                }
+                else
+                {
+                    //构不成三角形。
+                    return "您输入的三边构不成三角形！";
+                }
             }
-            else if (side1 == side2 || side1 == side3 || side2 == side3)
+            else
             {
-                return "是等腰三角形";
+                //边长信息有误。
+                return "您输入的边长信息有误！";
             }
-            else if (side1 + side2 <= side3 || side1 + side3 <= side2 || side2 + side3 <= side1)
+        }
+        private bool CheckAcuteAngle(double powSum, double max)
+        {
+            return (Math.Pow(max, 2) < powSum - Math.Pow(max, 2)) ? true : false;
+        }
+
+        private bool CheckObtuseAngle(double powSum, double max)
+        {
+            return (Math.Pow(max, 2) > powSum - Math.Pow(max, 2)) ? true : false;
+        }
+
+        private bool CheckRightAngle(double powSum, double max)
+        {
+            return (Math.Pow(max, 2) == powSum - Math.Pow(max, 2)) ? true : false;
+        }
+
+        private bool CheckEquicrural(double e1, double e2, double e3)
+        {
+            return (e1 == e2 && e2 == e3) ? true : false;
+        }
+
+        private bool CheckEquilateral(double e1, double e2, double e3)
+        {
+            return (e1 == e2 || e2 == e3 || e3 == e1) ? true : false;
+        }
+
+        private bool CheckTriangle(double edge1, double edge2, double edge3)
+        {
+            double[] edges = new double[] { edge1, edge2, edge3 };
+            double sum = edges[0] + edges[1] + edges[2];
+            int succFlag = 0;
+            for (int i = 0; i < edges.Count(); i++)
             {
-                return "不是三角形";
+                if (edges[i] < sum - edges[i])
+                {
+                    succFlag++;
+                }
             }
-            return "是三角形";
+            if (succFlag == 3)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        private bool CheckInput(string edge1, string edge2, string edge3)
+        {
+            bool result = false;
+            Regex reg = new Regex("^[0-9]*$");
+            if (reg.IsMatch(edge1) && reg.IsMatch(edge2) && reg.IsMatch(edge3))
+            {
+                try
+                {
+                    if (Int32.Parse(edge1) > 0 && Int32.Parse(edge2) > 0 && Int32.Parse(edge3) > 0)
+                    {
+                        result = true;
+                    }
+                    else
+                    {
+                        result = false;
+                    }
+                }
+                catch
+                {
+                    //如果转换int型失败会返回false 这个字符串中含有非数字的字符 所以不能转换为int型
+                    result = false;
+                }
+                
+            }
+            return result;
         }
     }
 
