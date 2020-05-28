@@ -5,6 +5,8 @@ using Newtonsoft.Json;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Newtonsoft.Json.Linq;
+using System.Windows.Forms;
 
 namespace Test.Tests
 {
@@ -33,6 +35,9 @@ namespace Test.Tests
 
     public class TriangleBoundaryTest : Test
     {
+        private double testNum = 0;
+        private double successNum = 0;
+
         private static string BOUNDARY_TEST_FILE = "../../mydata/Triangle/Triangle_Boundary_Testcase.json";
         private static string BOUNDARY_TEST_RESULT = "../../mydata/Triangle/Triangle_Boundary_Result.json";
         private static string BOUNDARY_EXPEXTED_TEST_RESULT = "../../mydata/Triangle/Triangle_Boundary_Expected_Result.json";
@@ -65,7 +70,7 @@ namespace Test.Tests
             }
         }
 
-        public override Boolean StartTest(int method)
+        public override double StartTest(int method)
         {
             String testFile;
             String resFile;
@@ -84,21 +89,27 @@ namespace Test.Tests
             }
             Dictionary<string, Triangle> triangleDictionary = ReadCaseJsonFile(testFile);
             String expectedResult = ReadExpectedResultJsonFile(expectedResFile);
+            JObject obj = (JObject)JsonConvert.DeserializeObject(expectedResult);
             Dictionary<string, string> resultDictionary = new Dictionary<string, string>();
             foreach(KeyValuePair<string, Triangle> kvp in triangleDictionary)
             {
+                testNum+=1;
                 resultDictionary.Add(kvp.Key, kvp.Value.CheckTriangle());
+                if (obj.ContainsKey(kvp.Key))
+                {
+                    if (kvp.Value.CheckTriangle().Equals(obj[kvp.Key].ToString()))
+                    {
+                        successNum+=1;
+                    }
+                }
             }
             string result = JsonConvert.SerializeObject(resultDictionary);
             using (StreamWriter w = new StreamWriter(resFile))
             {
                 w.WriteLine(result);
             }
-            if (expectedResult == null || !expectedResult.Equals(result))
-            {
-                return false;
-            }
-            return true;
+            double resultNum = successNum / testNum;
+            return resultNum;
         }
     }
 }

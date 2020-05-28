@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using Newtonsoft.Json;
-
+using Newtonsoft.Json.Linq;
 
 namespace Test.Tests
 {
@@ -138,6 +138,9 @@ namespace Test.Tests
 
     public class CalenderBoundaryTest : Test
     {
+        private double testNum = 0;
+        private double successNum = 0;
+
         private static string BOUNDARY_TEST_FILE = "../../mydata/Calender/Calender_Boundary_Testcase.json";
         private static string BOUNDARY_TEST_RESULT = "../../mydata/Calender/Calender_Boundary_Result.json";
         private static string BOUNDARY_EXPEXTED_TEST_RESULT = "../../mydata/Calender/Calender_Boundary_Expected_Result.json";
@@ -174,7 +177,7 @@ namespace Test.Tests
             }
         }
 
-        public override Boolean StartTest(int method)
+        public override double StartTest(int method)
         {
             String testFile;
             String resFile;
@@ -191,24 +194,29 @@ namespace Test.Tests
                 resFile = EquaValCla_TEST_RESULT;
                 expectedResFile = EquaValCla_EXPEXTED_TEST_RESULT;
             }
-                Dictionary<string, CalenderType> CalenderTypeDictionary = ReadCaseJsonFile(testFile);
-                String expectedResult = ReadExpectedResultJsonFile(expectedResFile);
-                Dictionary<string, string> resultDictionary = new Dictionary<string, string>();
-                foreach (KeyValuePair<string, CalenderType> kvp in CalenderTypeDictionary)
+            Dictionary<string, CalenderType> CalenderTypeDictionary = ReadCaseJsonFile(testFile);
+            String expectedResult = ReadExpectedResultJsonFile(expectedResFile);
+            JObject obj = (JObject)JsonConvert.DeserializeObject(expectedResult);
+            Dictionary<string, string> resultDictionary = new Dictionary<string, string>();
+            foreach (KeyValuePair<string, CalenderType> kvp in CalenderTypeDictionary)
+            {
+                resultDictionary.Add(kvp.Key, kvp.Value.TheNextDay());
+                if (obj.ContainsKey(kvp.Key))
                 {
-                    resultDictionary.Add(kvp.Key, kvp.Value.TheNextDay());
+                    testNum += 1;
+                    if (kvp.Value.TheNextDay().Equals(obj[kvp.Key].ToString()))
+                    {
+                        successNum += 1;
+                    }
                 }
-                string result = JsonConvert.SerializeObject(resultDictionary);
-                using (StreamWriter w = new StreamWriter(resFile))
-                {
-                    w.WriteLine(result);
-                }
-                if (expectedResult == null || !expectedResult.Equals(result))
-                {
-                    return false;
-                }
-                return true;
+            }
+            string result = JsonConvert.SerializeObject(resultDictionary);
+            using (StreamWriter w = new StreamWriter(resFile))
+            {
+                w.WriteLine(result);
+            }
+            double resultNum = successNum / testNum;
+            return resultNum;
         }
     }
-
 }

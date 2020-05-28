@@ -5,6 +5,7 @@ using Newtonsoft.Json;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Newtonsoft.Json.Linq;
 
 namespace Test.Tests
 {
@@ -61,8 +62,11 @@ namespace Test.Tests
 
 	public class ComissionBoundaryTest : Test
 	{
-		//测试文件的json地址
-		private static string BOUNDARY_TEST_FILE = "../../mydata/Comission/Comission_Boundary_Testcase.json";
+
+        private double testNum = 0;
+        private double successNum = 0;
+        //测试文件的json地址
+        private static string BOUNDARY_TEST_FILE = "../../mydata/Comission/Comission_Boundary_Testcase.json";
 		private static string BOUNDARY_TEST_RESULT = "../../mydata/Comission/Comission_Boundary_Result.json";
         private static string BOUNDARY_EXPEXTED_TEST_RESULT = "../../mydata/Comission/Comission_Boundary_Expected_Result.json";
 
@@ -94,7 +98,7 @@ namespace Test.Tests
             }
         }
 
-        public override bool StartTest(int method)
+        public override double StartTest(int method)
 		{
             String testFile;
             String resFile;
@@ -113,22 +117,28 @@ namespace Test.Tests
             }
             Dictionary<string, Comission> saleDictionary = ReadJsonFile(testFile);
             String expectedResult = ReadExpectedResultJsonFile(expectedResFile);
+            JObject obj = (JObject)JsonConvert.DeserializeObject(expectedResult);
             Dictionary<string, double> resultDictionary = new Dictionary<string, double>();
 			foreach (KeyValuePair<string, Comission> kvp in saleDictionary)
 			{
-				resultDictionary.Add(kvp.Key, kvp.Value.CalculateComission());
-			}
+                testNum += 1;
+                resultDictionary.Add(kvp.Key, kvp.Value.CalculateComission());
+                if (obj.ContainsKey(kvp.Key))
+                {
+                    if (kvp.Value.CalculateComission().Equals(obj[kvp.Key].ToString()))
+                    {
+                        successNum += 1;
+                    }
+                }
+            }
 			string result = JsonConvert.SerializeObject(resultDictionary);
 			using (StreamWriter w = new StreamWriter(resFile))
 			{
 				w.WriteLine(result);
 			}
-            if (expectedResult == null || !expectedResult.Equals(result))
-            {
-                return false;
-            }
-            return true;
-		}
+            double resultNum = successNum / testNum;
+            return resultNum;
+        }
 	}
 
 }
