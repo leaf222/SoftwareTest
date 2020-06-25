@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using System.Windows.Forms.DataVisualization.Charting;
 using Test.Tests;
 
 
@@ -75,6 +75,13 @@ namespace Test
         private void chart1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void SetChart(Tests.Test t)
+        {
+            chart1.Series[0].Points.AddXY("总测试用例数量", t.resultInfo.totalCase);//添加数据
+            chart1.Series[0].Points.AddXY("成功用例数量", t.resultInfo.successCase);//添加数据
+            chart1.Series[0].Points.AddXY("失败用例数量", t.resultInfo.failCase);//添加数据
         }
     }
 }

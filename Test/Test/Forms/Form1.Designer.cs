@@ -42,7 +42,7 @@
             // 
             this.TestName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.TestName.FormattingEnabled = true;
-            this.TestName.Location = new System.Drawing.Point(492, 85);
+            this.TestName.Location = new System.Drawing.Point(555, 85);
             this.TestName.Name = "TestName";
             this.TestName.Size = new System.Drawing.Size(155, 23);
             this.TestName.TabIndex = 0;
@@ -52,7 +52,7 @@
             // 
             this.TestMethod.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.TestMethod.FormattingEnabled = true;
-            this.TestMethod.Location = new System.Drawing.Point(492, 137);
+            this.TestMethod.Location = new System.Drawing.Point(555, 137);
             this.TestMethod.Name = "TestMethod";
             this.TestMethod.Size = new System.Drawing.Size(155, 23);
             this.TestMethod.TabIndex = 1;
@@ -64,20 +64,20 @@
             this.chart1.ChartAreas.Add(chartArea1);
             legend1.Name = "Legend1";
             this.chart1.Legends.Add(legend1);
-            this.chart1.Location = new System.Drawing.Point(92, 85);
+            this.chart1.Location = new System.Drawing.Point(12, 40);
             this.chart1.Name = "chart1";
             series1.ChartArea = "ChartArea1";
             series1.Legend = "Legend1";
             series1.Name = "Series1";
             this.chart1.Series.Add(series1);
-            this.chart1.Size = new System.Drawing.Size(300, 300);
+            this.chart1.Size = new System.Drawing.Size(537, 345);
             this.chart1.TabIndex = 2;
             this.chart1.Text = "chart1";
             this.chart1.Click += new System.EventHandler(this.chart1_Click);
             // 
             // StartButton
             // 
-            this.StartButton.Location = new System.Drawing.Point(492, 189);
+            this.StartButton.Location = new System.Drawing.Point(555, 186);
             this.StartButton.Name = "StartButton";
             this.StartButton.Size = new System.Drawing.Size(112, 23);
             this.StartButton.TabIndex = 3;
