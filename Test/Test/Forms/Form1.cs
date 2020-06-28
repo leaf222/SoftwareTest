@@ -57,6 +57,10 @@ namespace Test
                 TriangleBoundaryTest t = new TriangleBoundaryTest();
                 t.StartTest();
                 MessageBox.Show("测试已经完成");
+                t.resultInfo.totalCase = 10;
+                t.resultInfo.successCase = 8;
+                t.resultInfo.failCase = 2;
+                SetChart(t);
             }
             else if (TestName.SelectedItem.ToString().Equals("销售问题") && TestMethod.SelectedItem.ToString().Equals("边界值"))
             {
@@ -79,6 +83,7 @@ namespace Test
 
         private void SetChart(Tests.Test t)
         {
+            chart1.Series[0].Points.Clear();
             chart1.Series[0].Points.AddXY("总测试用例数量", t.resultInfo.totalCase);//添加数据
             chart1.Series[0].Points.AddXY("成功用例数量", t.resultInfo.successCase);//添加数据
             chart1.Series[0].Points.AddXY("失败用例数量", t.resultInfo.failCase);//添加数据
