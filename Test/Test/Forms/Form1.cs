@@ -76,7 +76,7 @@ namespace Test
             }
             else if (TestName.SelectedItem.ToString().Equals("销售问题") && TestMethod.SelectedItem.ToString().Equals("边界值"))
             {
-                TriangleBoundaryTest t = new ComissionBoundaryTest();
+                ComissionBoundaryTest t = new ComissionBoundaryTest();
                 t.StartTest();
                 MessageBox.Show("测试已经完成");
             }
