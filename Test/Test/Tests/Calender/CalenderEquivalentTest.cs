@@ -9,23 +9,23 @@ using Newtonsoft.Json;
 
 namespace Test.Tests
 {
-    class CalenderType
+    class CalenderType2
     {
-        public int type_year { get; set; }
-        public int type_month { get; set; }
-        public int type_day { get; set; }
+        public int type_year2 { get; set; }
+        public int type_month2 { get; set; }
+        public int type_day2 { get; set; }
 
         public string result;
 
-        public bool InputIllegal()
+        public bool InputIllegal2()
         {   //日份范围
-            if (type_day > 31 || type_day < 1)
+            if (type_day2 > 31 || type_day2 < 1)
             {
                 return true;
             }//小月最大值
-            else if (type_day == 31)
+            else if (type_day2 == 31)
             {
-                switch (type_month)
+                switch (type_month2)
                 {
                     case 2:
                         return true;
@@ -39,11 +39,11 @@ namespace Test.Tests
                         return true;
                 }
             }//闰年判断
-            else if (type_month == 2 && type_day == 29)
+            else if (type_month2 == 2 && type_day2 == 29)
             {
-                int four = type_year % 4;
-                int hundred = type_year % 100;
-                int both = type_year % 400;
+                int four = type_year2 % 4;
+                int hundred = type_year2 % 100;
+                int both = type_year2 % 400;
                 if (four == 0 && hundred != 0)
                 {
                     return false;
@@ -54,7 +54,7 @@ namespace Test.Tests
                 }
                 return true;
             }//月份范围
-            else if (type_month > 12 || type_month < 1)
+            else if (type_month2 > 12 || type_month2 < 1)
             {
                 return true;
             }
@@ -64,10 +64,10 @@ namespace Test.Tests
         public string TheNextDay()
         {
 
-            int result_year = type_year;
-            int result_month = type_month;
-            int result_day = type_day + 1;
-            bool illegal = InputIllegal();
+            int result_year = type_year2;
+            int result_month = type_month2;
+            int result_day = type_day2 + 1;
+            bool illegal = InputIllegal2();
             //判断输入是否合法
             if (illegal)
             {
@@ -75,44 +75,44 @@ namespace Test.Tests
                 return result;
             }
             //根据日来判断日和月
-            if (type_day == 31)
+            if (type_day2 == 31)
             {
                 result_month += 1;
                 result_day = 1;
 
             }
-            else if (type_day == 30)
+            else if (type_day2 == 30)
             {
-                switch (type_month)
+                switch (type_month2)
                 {
                     case 4:
-                        result_month = type_month + 1;
+                        result_month = type_month2 + 1;
                         result_day = 1;
                         break;
                     case 6:
-                        result_month = type_month + 1;
+                        result_month = type_month2 + 1;
                         result_day = 1;
                         break;
                     case 9:
-                        result_month = type_month + 1;
+                        result_month = type_month2 + 1;
                         result_day = 1;
                         break;
                     case 11:
-                        result_month = type_month + 1;
+                        result_month = type_month2 + 1;
                         result_day = 1;
                         break;
                 }
             }
-            else if (type_month == 2)
+            else if (type_month2 == 2)
             {
-                switch (type_day)
+                switch (type_day2)
                 {
                     case 29:
-                        result_month = type_month + 1;
+                        result_month = type_month2 + 1;
                         result_day = 1;
                         break;
                     case 28:
-                        result_month = type_month + 1;
+                        result_month = type_month2 + 1;
                         result_day = 1;
                         break;
 
@@ -121,11 +121,11 @@ namespace Test.Tests
             }
 
             //根据月来判断月和年
-            else if (type_day == 31 && type_month == 12)
+            else if (type_day2 == 31 && type_month2 == 12)
             {
                 result_day = 1;
                 result_month = 1;
-                result_year = type_year + 1;
+                result_year = type_year2 + 1;
 
             }
 

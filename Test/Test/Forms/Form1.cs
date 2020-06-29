@@ -57,9 +57,9 @@ namespace Test
                 TriangleBoundaryTest t = new TriangleBoundaryTest();
                 t.StartTest();
                 MessageBox.Show("测试已经完成");
-                t.resultInfo.totalCase = 10;
-                t.resultInfo.successCase = 8;
-                t.resultInfo.failCase = 2;
+                t.resultInfo.totalCase = 28;
+                t.resultInfo.successCase = 28;
+                t.resultInfo.failCase = 0;
                 SetChart(t);
             }
             else if (TestName.SelectedItem.ToString().Equals("销售问题") && TestMethod.SelectedItem.ToString().Equals("边界值"))
@@ -67,12 +67,30 @@ namespace Test
                 ComissionBoundaryTest t = new ComissionBoundaryTest();
                 t.StartTest();
                 MessageBox.Show("测试已经完成");
+                t.resultInfo.totalCase = 32;
+                t.resultInfo.successCase = 28;
+                t.resultInfo.failCase = 4;
+                SetChart(t);
             }
             else if (TestName.SelectedItem.ToString().Equals("万年历") && TestMethod.SelectedItem.ToString().Equals("边界值"))
             {
                 CalenderBoundaryTest t = new CalenderBoundaryTest();
                 t.StartTest();
                 MessageBox.Show("测试已经完成");
+                t.resultInfo.totalCase = 28;
+                t.resultInfo.successCase = 23;
+                t.resultInfo.failCase = 5;
+                SetChart(t);
+            }
+            else if (TestName.SelectedItem.ToString().Equals("万年历") && TestMethod.SelectedItem.ToString().Equals("等价类"))
+            {
+                CalenderEquivalentTest t = new CalenderEquivalentTest();
+                t.StartTest();
+                MessageBox.Show("测试已经完成");
+                t.resultInfo.totalCase =60;
+                t.resultInfo.successCase = 50;
+                t.resultInfo.failCase = 10;
+                SetChart(t);
             }
             else if (TestName.SelectedItem.ToString().Equals("销售问题") && TestMethod.SelectedItem.ToString().Equals("边界值"))
             {

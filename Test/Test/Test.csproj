@@ -59,6 +59,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tests\Calender\CalenderBoundaryTest.cs" />
+    <Compile Include="Tests\Calender\CalenderEquivalentTest.cs" />
     <Compile Include="Tests\Comission\ComissionBoundaryTest.cs" />
     <Compile Include="Tests\Test.cs" />
     <Compile Include="Tests\Triangle\TriangleBoundaryTest.cs" />
@@ -89,8 +90,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup />
-  <ItemGroup>
-    <Folder Include="Tests\Comission\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
