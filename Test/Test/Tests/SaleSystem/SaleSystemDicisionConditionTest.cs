@@ -16,7 +16,7 @@ namespace Test.Tests
 		public double CalculateAmout()
 		{
 			int attribute = 0;  // 佣金系数
-		    int result = 0;  // 佣金
+		    double result = 0;  // 佣金
 		    if(amount > 200 && freeDay <= 10){
 		        if(cash >= 60) {
 		            attribute = 7;

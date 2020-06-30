@@ -64,6 +64,11 @@
     <Compile Include="Tests\Calender\CalenderEquivalentTest_v2.cs" />
     <Compile Include="Tests\Comission\ComissionBoundaryTest.cs" />
     <Compile Include="Tests\Comission\ComissionBoundaryTest_v2.cs" />
+    <Compile Include="Tests\SaleSystem\SaleSystemBranchTest.cs" />
+    <Compile Include="Tests\SaleSystem\SaleSystemDicisionConditionTest.cs" />
+    <Compile Include="Tests\SaleSystem\SaleSystemMultipleConditionTest.cs" />
+    <Compile Include="Tests\SaleSystem\SaleSystemSimpleConditionTest.cs" />
+    <Compile Include="Tests\SaleSystem\SaleSystemStatementTest.cs" />
     <Compile Include="Tests\Test.cs" />
     <Compile Include="Tests\Triangle\TriangleBoundaryTest_v2.cs" />
     <Compile Include="Tests\Triangle\TriangleEquivalentTest.cs" />
