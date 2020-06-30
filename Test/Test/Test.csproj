@@ -63,11 +63,12 @@
     <Compile Include="Tests\Calender\CalenderEquivalentTest.cs" />
     <Compile Include="Tests\Calender\CalenderEquivalentTest_v2.cs" />
     <Compile Include="Tests\Comission\ComissionBoundaryTest.cs" />
+    <Compile Include="Tests\Comission\ComissionBoundaryTest_v2.cs" />
     <Compile Include="Tests\Test.cs" />
-    <Compile Include="Tests\Triangle\TriangleEquivalentTestBefore.cs" />
+    <Compile Include="Tests\Triangle\TriangleBoundaryTest_v2.cs" />
     <Compile Include="Tests\Triangle\TriangleEquivalentTest.cs" />
-    <Compile Include="Tests\Triangle\TriangleBoundaryTestBefore.cs" />
     <Compile Include="Tests\Triangle\TriangleBoundaryTest.cs" />
+    <Compile Include="Tests\Triangle\TriangleEquivalentTest_v2.cs" />
     <EmbeddedResource Include="Forms\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>

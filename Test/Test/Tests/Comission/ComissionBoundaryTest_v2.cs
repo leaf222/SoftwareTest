@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Test.Tests
 {
-	class Comission
+	class Comission2
 	{
 		public int host { get; set; }
 		public int monitor { get; set; }
@@ -22,7 +22,7 @@ namespace Test.Tests
 			{
 				flag = 0;
 				/*缺陷和非缺陷版本之差这一行*/
-				comission = -1; 
+				commision = -1; 
 				// print("必须至少销售一台完整计算机")
 			}
 
@@ -61,7 +61,7 @@ namespace Test.Tests
 	}
 
 
-	public class ComissionBoundaryTest : Test
+	public class ComissionBoundaryTest2 : Test
 	{
 		//测试文件的json地址
 		private static string TEST_FILE = "../../mydata/Comission/Comission_Boundary_Testcase.json";

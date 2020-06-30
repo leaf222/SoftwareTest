@@ -23,11 +23,14 @@ namespace Test
         //为两个下拉框添加内容
         private void ComboBoxLoad()
         {
+            TestVersion.Items.Add("1.0版本");
+            TestVersion.Items.Add("2.0版本");
             TestName.Items.Add("万年历");
             TestName.Items.Add("三角形");
             TestName.Items.Add("销售问题");
             TestMethod.Items.Add("边界值");
             TestMethod.Items.Add("等价类");
+            TestMethod.Items.Clear();
         }
 
         private void TestName_SelectedIndexChanged(object sender, EventArgs e)

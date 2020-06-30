@@ -35,6 +35,7 @@
             this.TestMethod = new System.Windows.Forms.ComboBox();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.StartButton = new System.Windows.Forms.Button();
+            this.TestVersion = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -42,7 +43,7 @@
             // 
             this.TestName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.TestName.FormattingEnabled = true;
-            this.TestName.Location = new System.Drawing.Point(555, 85);
+            this.TestName.Location = new System.Drawing.Point(555, 130);
             this.TestName.Name = "TestName";
             this.TestName.Size = new System.Drawing.Size(155, 23);
             this.TestName.TabIndex = 0;
@@ -52,7 +53,7 @@
             // 
             this.TestMethod.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.TestMethod.FormattingEnabled = true;
-            this.TestMethod.Location = new System.Drawing.Point(555, 137);
+            this.TestMethod.Location = new System.Drawing.Point(555, 183);
             this.TestMethod.Name = "TestMethod";
             this.TestMethod.Size = new System.Drawing.Size(155, 23);
             this.TestMethod.TabIndex = 1;
@@ -77,7 +78,7 @@
             // 
             // StartButton
             // 
-            this.StartButton.Location = new System.Drawing.Point(555, 186);
+            this.StartButton.Location = new System.Drawing.Point(555, 230);
             this.StartButton.Name = "StartButton";
             this.StartButton.Size = new System.Drawing.Size(112, 23);
             this.StartButton.TabIndex = 3;
@@ -85,11 +86,21 @@
             this.StartButton.UseVisualStyleBackColor = true;
             this.StartButton.Click += new System.EventHandler(this.StartButton_Click);
             // 
+            // TestVersion
+            // 
+            this.TestVersion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.TestVersion.FormattingEnabled = true;
+            this.TestVersion.Location = new System.Drawing.Point(555, 80);
+            this.TestVersion.Name = "TestVersion";
+            this.TestVersion.Size = new System.Drawing.Size(155, 23);
+            this.TestVersion.TabIndex = 4;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.TestVersion);
             this.Controls.Add(this.StartButton);
             this.Controls.Add(this.chart1);
             this.Controls.Add(this.TestMethod);
@@ -108,6 +119,7 @@
         private System.Windows.Forms.ComboBox TestMethod;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
         private System.Windows.Forms.Button StartButton;
+        private System.Windows.Forms.ComboBox TestVersion;
     }
 }
 
