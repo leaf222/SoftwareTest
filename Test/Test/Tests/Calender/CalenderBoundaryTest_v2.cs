@@ -195,21 +195,21 @@ namespace Test.Tests
         private static string TEST_FILE = "../../mydata/Calender/Calender_Boundary_Testcase.json";
         private static string TEST_RESULT = "../../mydata/Calender/Calender_Boundary_Result2.json";
 
-        private Dictionary<string, CalenderType> ReadJsonFile()
+        private Dictionary<string, CalenderType4> ReadJsonFile()
         {
             using (StreamReader r = new StreamReader(TEST_FILE))
             {
                 string json = r.ReadToEnd();
-                Dictionary<string, CalenderType> CalenderTypeDic = JsonConvert.DeserializeObject<Dictionary<string, CalenderType>>(json);
+                Dictionary<string, CalenderType4> CalenderTypeDic = JsonConvert.DeserializeObject<Dictionary<string, CalenderType4>>(json);
                 return CalenderTypeDic;
             }
         }
 
         public override void StartTest()
         {
-            Dictionary<string, CalenderType> CalenderTypeDictionary = ReadJsonFile();
+            Dictionary<string, CalenderType4> CalenderTypeDictionary = ReadJsonFile();
             Dictionary<string, string> resultDictionary = new Dictionary<string, string>();
-            foreach (KeyValuePair<string, CalenderType> kvp in CalenderTypeDictionary)
+            foreach (KeyValuePair<string, CalenderType4> kvp in CalenderTypeDictionary)
             {
                 resultDictionary.Add(kvp.Key, kvp.Value.TheNextDay());
             }

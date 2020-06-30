@@ -194,21 +194,21 @@ namespace Test.Tests
         private static string TEST_FILE = "../../mydata/Calender/Calender_Equivalent_Testcase.json";
         private static string TEST_RESULT = "../../mydata/Calender/Calender_Equivalent_Result2.json";
 
-        private Dictionary<string, CalenderType> ReadJsonFile()
+        private Dictionary<string, CalenderType3> ReadJsonFile()
         {
             using (StreamReader r = new StreamReader(TEST_FILE))
             {
                 string json = r.ReadToEnd();
-                Dictionary<string, CalenderType> CalenderTypeDic = JsonConvert.DeserializeObject<Dictionary<string, CalenderType>>(json);
+                Dictionary<string, CalenderType3> CalenderTypeDic = JsonConvert.DeserializeObject<Dictionary<string, CalenderType3>>(json);
                 return CalenderTypeDic;
             }
         }
 
         public override void StartTest()
         {
-            Dictionary<string, CalenderType> CalenderTypeDictionary = ReadJsonFile();
+            Dictionary<string, CalenderType3> CalenderTypeDictionary = ReadJsonFile();
             Dictionary<string, string> resultDictionary = new Dictionary<string, string>();
-            foreach (KeyValuePair<string, CalenderType> kvp in CalenderTypeDictionary)
+            foreach (KeyValuePair<string, CalenderType3> kvp in CalenderTypeDictionary)
             {
                 resultDictionary.Add(kvp.Key, kvp.Value.TheNextDay());
             }
