@@ -11,7 +11,7 @@ using System.Text.RegularExpressions;
 namespace Test.Tests
 {
 
-    class Triangle2
+    class Triangle3
     {
         public string side1 { get; set; }
         public string side2 { get; set; }
@@ -113,10 +113,10 @@ namespace Test.Tests
         }
     }
 
-    public class TriangleEquivalentTest : Test
+    public class TriangleEquivalentTest2 : Test
     {
         private static string TEST_FILE = "../../mydata/Triangle/Triangle_Equivalent_Testcase.json";
-        private static string TEST_RESULT = "../../mydata/Triangle/Triangle_Equivalent_Result.json";
+        private static string TEST_RESULT = "../../mydata/Triangle/Triangle_Equivalent_Result_v2.json";
 
         private Dictionary<string, Triangle> ReadJsonFile()
         {
