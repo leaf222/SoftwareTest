@@ -30,12 +30,27 @@ namespace Test
             TestName.Items.Add("销售问题");
             TestMethod.Items.Add("边界值");
             TestMethod.Items.Add("等价类");
-            TestMethod.Items.Clear();
         }
 
         private void TestName_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
+            if(TestName.SelectedItem.ToString().Equals("三角形"))
+            {
+                TestMethod.Items.Clear();
+                TestMethod.Items.Add("边界值");
+                TestMethod.Items.Add("等价类");
+            }
+            if (TestName.SelectedItem.ToString().Equals("万年历"))
+            {
+                TestMethod.Items.Clear();
+                TestMethod.Items.Add("边界值");
+                TestMethod.Items.Add("等价类");
+            }
+            if (TestName.SelectedItem.ToString().Equals("销售问题"))
+            {
+                TestMethod.Items.Clear();
+                TestMethod.Items.Add("边界值");
+            }
         }
 
         private void TestMethod_SelectedIndexChanged(object sender, EventArgs e)
@@ -104,12 +119,6 @@ namespace Test
                 t.resultInfo.successCase = 50;
                 t.resultInfo.failCase = 10;
                 SetChart(t);
-            }
-            else if (TestName.SelectedItem.ToString().Equals("销售问题") && TestMethod.SelectedItem.ToString().Equals("边界值"))
-            {
-                ComissionBoundaryTest t = new ComissionBoundaryTest();
-                t.StartTest();
-                MessageBox.Show("测试已经完成");
             }
         }
 
