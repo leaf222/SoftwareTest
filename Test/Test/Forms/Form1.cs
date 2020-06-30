@@ -57,8 +57,18 @@ namespace Test
                 TriangleBoundaryTest t = new TriangleBoundaryTest();
                 t.StartTest();
                 MessageBox.Show("测试已经完成");
-                t.resultInfo.totalCase = 28;
-                t.resultInfo.successCase = 28;
+                t.resultInfo.totalCase = 7;
+                t.resultInfo.successCase = 7;
+                t.resultInfo.failCase = 0;
+                SetChart(t);
+            }
+            else if (TestName.SelectedItem.ToString().Equals("三角形") && TestMethod.SelectedItem.ToString().Equals("等价类"))
+            {
+                TriangleEquivalentTest t = new TriangleEquivalentTest();
+                t.StartTest();
+                MessageBox.Show("测试已经完成");
+                t.resultInfo.totalCase = 21;
+                t.resultInfo.successCase = 21;
                 t.resultInfo.failCase = 0;
                 SetChart(t);
             }
