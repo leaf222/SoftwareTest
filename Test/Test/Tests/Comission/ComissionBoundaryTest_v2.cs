@@ -21,6 +21,8 @@ namespace Test.Tests
 			if (host <= 0 || monitor <= 0 || peripheral <= 0)
 			{
 				flag = 0;
+				/*缺陷和非缺陷版本之差这一行*/
+				comission = -1; 
 				// print("必须至少销售一台完整计算机")
 			}
 
