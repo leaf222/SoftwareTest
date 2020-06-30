@@ -11,7 +11,7 @@ using System.Text.RegularExpressions;
 namespace Test.Tests
 {
 
-    class TriangleBefore2
+    class Triangle2
     {
         public string side1 { get; set; }
         public string side2 { get; set; }
@@ -21,26 +21,34 @@ namespace Test.Tests
             Dictionary<String, int> result = new Dictionary<String, int>();
             result.Add("等腰", 0);
             result.Add("等边", 0);
-            var edge1 = float.Parse(side1);
-            var edge2 = float.Parse(side2);
-            var edge3 = float.Parse(side3);
-            float[] Numbers = new float[] { edge1, edge2, edge3 };
-            float max = Numbers.Max();
-            if (CheckTriangle(edge1, edge2, edge3))
+            if (CheckInput(side1, side2, side3))
             {
-                //三角形
-                result["等边"] = CheckEquicrural(edge1, edge2, edge3) ? 1 : 0;
-                result["等腰"] = CheckEquilateral(edge1, edge2, edge3) ? 1 : 0;
-                string resultTip = (result["等腰"] == 1 && result["等边"] == 0) ? "等腰" : "";
-                resultTip += result["等边"] == 1 ? "等边" : "";
-                resultTip += (result["等腰"] == 0 && result["等边"] == 0) ? "普通" : "";
-                resultTip += "三角形";
-                return resultTip;
+                var edge1 = float.Parse(side1);
+                var edge2 = float.Parse(side2);
+                var edge3 = float.Parse(side3);
+                float[] Numbers = new float[] { edge1, edge2, edge3 };
+                float max = Numbers.Max();
+                if (CheckTriangle(edge1, edge2, edge3))
+                {
+                    //三角形
+                    result["等边"] = CheckEquicrural(edge1, edge2, edge3) ? 1 : 0;
+                    result["等腰"] = CheckEquilateral(edge1, edge2, edge3) ? 1 : 0;
+                    string resultTip = (result["等腰"] == 1 && result["等边"] == 0) ? "等腰" : "";
+                    resultTip += result["等边"] == 1 ? "等边" : "";
+                    resultTip += (result["等腰"] == 0 && result["等边"] == 0) ? "普通" : "";
+                    resultTip += "三角形";
+                    return resultTip;
+                }
+                else
+                {
+                    //构不成三角形。
+                    return "您输入的三边构不成三角形！";
+                }
             }
             else
             {
-                //构不成三角形。
-                return "您输入的三边构不成三角形！";
+                //边长信息有误。
+                return "您输入的边长信息有误！";
             }
         }
 
@@ -75,12 +83,40 @@ namespace Test.Tests
                 return false;
             }
         }
+
+        private bool CheckInput(string edge1, string edge2, string edge3)
+        {
+            bool result = false;
+            Regex reg = new Regex("^[0-9].*$");
+            if (reg.IsMatch(edge1) && reg.IsMatch(edge2) && reg.IsMatch(edge3))
+            {
+                try
+                {
+                    if (float.Parse(edge1) > 0 && float.Parse(edge2) > 0 && float.Parse(edge3) > 0 &&
+                        float.Parse(edge1) <= 100 && float.Parse(edge2) <= 100 && float.Parse(edge3) <= 100)
+                    {
+                        result = true;
+                    }
+                    else
+                    {
+                        result = false;
+                    }
+                }
+                catch
+                {
+                    //如果转换int型失败会返回false 这个字符串中含有非数字的字符 所以不能转换为int型
+                    result = false;
+                }
+                
+            }
+            return result;
+        }
     }
 
-    public class TriangleEquivalentTestBefore : Test
+    public class TriangleEquivalentTest : Test
     {
-        private static string TEST_FILE = "../../mydata/Triangle/Triangle_Boundary_Testcase.json";
-        private static string TEST_RESULT = "../../mydata/Triangle/Triangle_Boundary_Before_Result.json";
+        private static string TEST_FILE = "../../mydata/Triangle/Triangle_Equivalent_Testcase.json";
+        private static string TEST_RESULT = "../../mydata/Triangle/Triangle_Equivalent_Result.json";
 
         private Dictionary<string, Triangle> ReadJsonFile()
         {
