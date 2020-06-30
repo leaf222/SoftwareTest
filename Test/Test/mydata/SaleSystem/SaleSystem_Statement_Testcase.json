@@ -1,0 +1,20 @@
+{
+	"Testcase1":
+	{
+			"amount":"230",
+			"freeDay":"8",
+			"cash":"70"
+	},
+	"Testcase2":
+	{
+			"amount":"160",
+			"freeDay":"7",
+			"cash":"50"
+	},
+	"Testcase3":
+	{
+			"amount":"220",
+			"freeDay":"12",
+			"cash":"90"
+	}
+}
