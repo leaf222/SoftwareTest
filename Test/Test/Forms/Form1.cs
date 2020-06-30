@@ -84,7 +84,7 @@ namespace Test
             }
             else if (TestName.SelectedItem.ToString().Equals("万年历") && TestMethod.SelectedItem.ToString().Equals("边界值"))
             {
-                CalenderBoundaryTest t = new CalenderBoundaryTest();
+                CalenderBoundaryTest2 t = new CalenderBoundaryTest2();
                 t.StartTest();
                 MessageBox.Show("测试已经完成");
                 t.resultInfo.totalCase = 28;
@@ -94,7 +94,7 @@ namespace Test
             }
             else if (TestName.SelectedItem.ToString().Equals("万年历") && TestMethod.SelectedItem.ToString().Equals("等价类"))
             {
-                CalenderEquivalentTest t = new CalenderEquivalentTest();
+                CalenderEquivalentTest2 t = new CalenderEquivalentTest2();
                 t.StartTest();
                 MessageBox.Show("测试已经完成");
                 t.resultInfo.totalCase =60;

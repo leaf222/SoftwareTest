@@ -59,7 +59,9 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tests\Calender\CalenderBoundaryTest.cs" />
+    <Compile Include="Tests\Calender\CalenderBoundaryTest_v2.cs" />
     <Compile Include="Tests\Calender\CalenderEquivalentTest.cs" />
+    <Compile Include="Tests\Calender\CalenderEquivalentTest_v2.cs" />
     <Compile Include="Tests\Comission\ComissionBoundaryTest.cs" />
     <Compile Include="Tests\Test.cs" />
     <Compile Include="Tests\Triangle\TriangleEquivalentTestBefore.cs" />
