@@ -151,27 +151,27 @@ namespace Test
             else if (TestName.SelectedItem.ToString().Equals("销售问题（第八题）") && TestMethod.SelectedItem.ToString().Equals("路径测试") && TestVersion.SelectedItem.ToString().Equals("1.0版本"))
             {
                 //待测-第八题路径测试
-                TestTheTest(3, 1, 2, new SaleSystemStatementTest());
+                TestTheTest(3, 3, 0, new SaleSystemStatementTest());
             }
             else if (TestName.SelectedItem.ToString().Equals("销售问题（第八题）") && TestMethod.SelectedItem.ToString().Equals("分支测试") && TestVersion.SelectedItem.ToString().Equals("1.0版本"))
             {
                 //待测-第八题分支测试
-                TestTheTest(4, 2, 2, new SaleSystemBranchTest());
+                TestTheTest(4, 4, 0, new SaleSystemBranchTest());
             }
             else if (TestName.SelectedItem.ToString().Equals("销售问题（第八题）") && TestMethod.SelectedItem.ToString().Equals("简单条件测试") && TestVersion.SelectedItem.ToString().Equals("1.0版本"))
             {
                 //待测-第八题简单条件测试
-                TestTheTest(3, 2, 1, new SaleSystemSimpleConditionTest());
+                TestTheTest(3, 3, 0, new SaleSystemSimpleConditionTest());
             }
             else if (TestName.SelectedItem.ToString().Equals("销售问题（第八题）") && TestMethod.SelectedItem.ToString().Equals("分支条件测试") && TestVersion.SelectedItem.ToString().Equals("1.0版本"))
             {
                 //待测-第八题分支条件测试
-                TestTheTest(4, 2, 2, new SaleSystemDicisionConditionTest());
+                TestTheTest(4, 4, 0, new SaleSystemDicisionConditionTest());
             }
             else if (TestName.SelectedItem.ToString().Equals("销售问题（第八题）") && TestMethod.SelectedItem.ToString().Equals("复杂条件测试") && TestVersion.SelectedItem.ToString().Equals("1.0版本"))
             {
                 //待测-第八题复杂条件测试
-                TestTheTest(12,8, 4, new SaleSystemMultipleConditionTest());
+                TestTheTest(12,12,0, new SaleSystemMultipleConditionTest());
             }
             else
             {
