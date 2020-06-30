@@ -27,7 +27,7 @@ namespace Test
             TestVersion.Items.Add("2.0版本");
             TestName.Items.Add("万年历");
             TestName.Items.Add("三角形");
-            TestName.Items.Add("销售问题");
+            TestName.Items.Add("佣金问题（第二题）");
             TestMethod.Items.Add("边界值");
             TestMethod.Items.Add("等价类");
         }
@@ -46,7 +46,7 @@ namespace Test
                 TestMethod.Items.Add("边界值");
                 TestMethod.Items.Add("等价类");
             }
-            if (TestName.SelectedItem.ToString().Equals("销售问题"))
+            if (TestName.SelectedItem.ToString().Equals("佣金问题（第二题）"))
             {
                 TestMethod.Items.Clear();
                 TestMethod.Items.Add("边界值");
@@ -90,7 +90,7 @@ namespace Test
                 t.resultInfo.failCase = 0;
                 SetChart(t);
             }
-            else if (TestName.SelectedItem.ToString().Equals("销售问题") && TestMethod.SelectedItem.ToString().Equals("边界值"))
+            else if (TestName.SelectedItem.ToString().Equals("佣金问题（第二题）") && TestMethod.SelectedItem.ToString().Equals("边界值"))
             {
                 ComissionBoundaryTest t = new ComissionBoundaryTest();
                 t.StartTest();
