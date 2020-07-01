@@ -66,7 +66,6 @@
     <Compile Include="Tests\Comission\ComissionBoundaryTest_v2.cs" />
     <Compile Include="Tests\PhoneSystem\PhoneSystem.cs" />
     <Compile Include="Tests\PhoneSystem\PhoneSystemBranchTest.cs" />
-    <Compile Include="Tests\PhoneSystem\PhoneSystemEquivalentTest.cs" />
     <Compile Include="Tests\SaleSystem\SaleSystemBranchTest.cs" />
     <Compile Include="Tests\SaleSystem\SaleSystemDicisionConditionTest.cs" />
     <Compile Include="Tests\SaleSystem\SaleSystemMultipleConditionTest.cs" />
@@ -101,9 +100,6 @@
     <None Include="mydata\Comission\Comission_Boundary_Expected_Result.json" />
     <None Include="mydata\Comission\Comission_Boundary_Result.json" />
     <None Include="mydata\Comission\Comission_Boundary_Testcase.json" />
-    <None Include="mydata\PhoneSystem\PhoneSystem_Equivalent_Expected_Result.json" />
-    <None Include="mydata\PhoneSystem\PhoneSystem_Equivalent_Result.json" />
-    <None Include="mydata\PhoneSystem\PhoneSystem_Equivalent_Testcase.json" />
     <None Include="mydata\SaleSystem\SaleSystem_Branch_Expected_Result.json" />
     <None Include="mydata\SaleSystem\SaleSystem_Branch_Result.json" />
     <None Include="mydata\SaleSystem\SaleSystem_Branch_Testcase.json" />
@@ -145,7 +141,9 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="mydata\PhoneSystem\" />
+  </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
