@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Test.Tests.PhoneSystem
+namespace Test.Tests
 {
 
     public class PhoneSystemBranchTest : Test
