@@ -1,222 +1,181 @@
 {
 	"Testcase1":
 	{
-			"host":"-1",
-			"monitor":"40",
-			"peripheral":"46"
+			"host":"1",
+			"monitor":"1",
+			"peripheral":"1"
 	},
 	"Testcase2":
 	{
-			"host":"0",
-			"monitor":"40",
-			"peripheral":"46"
+			"host":"2",
+			"monitor":"1",
+			"peripheral":"1"
 	},
 	"Testcase3":
 	{
-			"host":"1",
-			"monitor":"40",
-			"peripheral":"46"
+			"host":"5",
+			"monitor":"5",
+			"peripheral":"5"
 	},
 	"Testcase4":
 	{
-			"host":"3",
-			"monitor":"40",
-			"peripheral":"46"
+			"host":"5",
+			"monitor":"8",
+			"peripheral":"2"
 	},
 
 	"Testcase5":
 	{
-			"host":"40",
-			"monitor":"40",
-			"peripheral":"46"
-			
-	},
-	"Testcase6":
-	{
-		"host":"68",
-			"monitor":"40",
-			"peripheral":"46"
-			
-	},
-	"Testcase7":
-	{
-		"host":"70",
-			"monitor":"40",
-			"peripheral":"46"
-			
-	},
-	"Testcase8":
-	{
-		"host":"72",
-			"monitor":"40",
-			"peripheral":"46"
-			
-	},
-	"Testcase9":
-	{
-		"host":"40",
-			"monitor":"0",
-			"peripheral":"46"
-			
-	},
-	"Testcase10":
-	{
-		"host":"40",
-			"monitor":"1",
-			"peripheral":"46"
-			
-	},
-	"Testcase11":
-	{
-		"host":"40",
-			"monitor":"2",
-			"peripheral":"46"
-			
-	},
-	"Testcase12":
-	{
-		"host":"40",
-			"monitor":"79",
-			"peripheral":"46"
-			
-	},
-	"Testcase13":
-	{
-		"host":"40",
-			"monitor":"80",
-			"peripheral":"46"
-			
-	},
-	"Testcase14":
-	{
-		"host":"40",
-			"monitor":"81",
-			"peripheral":"46"
-			
-	},
-	"Testcase15":
-	{
-		"host":"40",
-			"monitor":"40",
-			"peripheral":"0"
-			
-	},
-	"Testcase16":
-	{
-		"host":"40",
-			"monitor":"40",
-			"peripheral":"1"
-	},		
-	"Testcase17":
-	{
-		"host":"40",
-			"monitor":"40",
-			"peripheral":"2"
-	
-			
-	},
-	"Testcase18":
-	{
-		"host":"40",
-			"monitor":"40",
-			"peripheral":"87"
-			
-	},
-	"Testcase19":
-	{
-		"host":"40",
-			"monitor":"40",
-			"peripheral":"90"
-			
-	},
-	"Testcase20":
-	{
-		"host":"40",
-			"monitor":"40",
-			"peripheral":"91"
-			
-	},
-	"Testcase21":
-	{
-		"host":"10",
+			"host":"10",
 			"monitor":"9",
 			"peripheral":"10"
 			
 	},
-	"Testcase22":
+	"Testcase6":
 	{
-		"host":"10",
-			"monitor":"15",
-			"peripheral":"6"
+		"host":"4",
+			"monitor":"14",
+			"peripheral":"10"
 			
 	},
-	"Testcase23":
+	"Testcase7":
 	{
 		"host":"10",
 			"monitor":"10",
 			"peripheral":"10"
 			
 	},
-	"Testcase24":
+	"Testcase8":
 	{
-		"host":"34",
-			"monitor":"2",
-			"peripheral":"2"
+		"host":"1",
+			"monitor":"10",
+			"peripheral":"15"
 			
 	},
-	"Testcase25":
-	{
-		"host":"23",
-			"monitor":"9",
-			"peripheral":"4"
-			
-	},
-	"Testcase26":
+	"Testcase9":
 	{
 		"host":"11",
 			"monitor":"10",
 			"peripheral":"10"
 			
 	},
-	"Testcase27":
+	"Testcase10":
 	{
-		"host":"9",
-			"monitor":"33",
-			"peripheral":"12"
+		"host":"17",
+			"monitor":"5",
+			"peripheral":"10"
 			
 	},
-	"Testcase28":
+	"Testcase11":
+	{
+		"host":"14",
+			"monitor":"14",
+			"peripheral":"14"
+			
+	},
+	"Testcase12":
+	{
+		"host":"14",
+			"monitor":"11",
+			"peripheral":"16"
+			
+	},
+	"Testcase13":
 	{
 		"host":"18",
 			"monitor":"18",
 			"peripheral":"17"
 			
 	},
-	"Testcase29":
+	"Testcase14":
+	{
+		"host":"12",
+			"monitor":"23",
+			"peripheral":"17"
+			
+	},
+	"Testcase15":
 	{
 		"host":"18",
 			"monitor":"18",
 			"peripheral":"18"
 			
 	},
-	"Testcase30":
+	"Testcase16":
 	{
-		"host":"3",
-			"monitor":"14",
-			"peripheral":"29"
-			
-	},
-	"Testcase31":
+		"host":"18",
+			"monitor":"21",
+			"peripheral":"16"
+	},		
+	"Testcase17":
 	{
 		"host":"18",
 			"monitor":"19",
 			"peripheral":"18"
+	
 			
 	},
-	"Testcase32":
+	"Testcase18":
 	{
-		"host":"9",
-			"monitor":"7",
-			"peripheral":"31"
+		"host":"24",
+			"monitor":"14",
+			"peripheral":"18"
+			
+	},
+	"Testcase19":
+	{
+		"host":"70",
+			"monitor":"40",
+			"peripheral":"46"
+			
+	},
+	"Testcase20":
+	{
+		"host":"40",
+			"monitor":"80",
+			"peripheral":"46"
+			
+	},
+	"Testcase21":
+	{
+		"host":"40",
+			"monitor":"40",
+			"peripheral":"87"
+			
+	},
+	"Testcase22":
+	{
+		"host":"70",
+			"monitor":"80",
+			"peripheral":"89"
+			
+	},
+	"Testcase23":
+	{
+		"host":"70",
+			"monitor":"80",
+			"peripheral":"90"
+			
+	},
+	"Testcase24":
+	{
+		"host":"85",
+			"monitor":"85",
+			"peripheral":"85"
+			
+	},
+	"Testcase25":
+	{
+		"host":"-1",
+			"monitor":"40",
+			"peripheral":"46"
+			
+	},
+	"Testcase26":
+	{
+		"host":"0",
+			"monitor":"40",
+			"peripheral":"46"
+			
 	}
 }

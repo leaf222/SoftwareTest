@@ -7,11 +7,17 @@
 	},
 	"Testcase2":
 	{
+			"amount":"220",
+			"freeDay":"9",
+			"cash":"55"
+	},
+	"Testcase3":
+	{
 			"amount":"160",
 			"freeDay":"7",
 			"cash":"50"
 	},
-	"Testcase3":
+	"Testcase4":
 	{
 			"amount":"220",
 			"freeDay":"12",
