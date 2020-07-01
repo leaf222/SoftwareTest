@@ -17,15 +17,15 @@ namespace Test
     {
         private Test.Tests.Test[,,] t;
 
-        enum MyTestName { 万年历 = 0, 三角形 = 1, 佣金问题_第二题 = 2, 销售问题_第八题 = 3};
-        enum MyTestMethod { 边界值 = 0, 等价类 = 1, 路径测试 = 2, 分支测试 = 3, 简单条件测试 = 4, 分支条件测试 = 5, 复杂条件测试 = 6 };
+        enum MyTestName { 万年历 = 0, 三角形 = 1, 佣金问题_第二题 = 2, 销售问题_第八题 = 3, 电话系统_第七题 = 4};
+        enum MyTestMethod { 边界值 = 0, 等价类 = 1, 路径测试 = 2, 分支测试 = 3, 简单条件测试 = 4, 分支条件测试 = 5, 复杂条件测试 = 6, 综合测试 = 7};
         enum MyTestVersion { 版本一 = 0, 版本二 = 1};
 
 
         public Form1()
         {
             InitializeComponent();
-            t = new Test.Tests.Test[4,7,2];
+            t = new Test.Tests.Test[5,8,2];
         }
         
         private void TestLoad()
@@ -45,6 +45,7 @@ namespace Test
             t[3, 4, 0] = new SaleSystemSimpleConditionTest();
             t[3, 5, 0] = new SaleSystemDicisionConditionTest();
             t[3, 6, 0] = new SaleSystemMultipleConditionTest();
+            t[4, 7, 0] = new PhoneSystemBranchTest();
         }
 
         //为两个下拉框添加内容
@@ -53,6 +54,7 @@ namespace Test
             TestName.Items.Add("万年历");
             TestName.Items.Add("三角形");
             TestName.Items.Add("佣金问题_第二题");
+            TestName.Items.Add("电话系统_第七题");
             TestName.Items.Add("销售问题_第八题");
             TestVersion.Items.Add("版本一");
             TestVersion.Items.Add("版本二");
@@ -96,6 +98,13 @@ namespace Test
                 TestMethod.Items.Add("简单条件测试");
                 TestMethod.Items.Add("分支条件测试");
                 TestMethod.Items.Add("复杂条件测试");
+                TestVersion.Items.Clear();
+                TestVersion.Items.Add("版本一");
+            }
+            if (TestName.SelectedItem.ToString().Equals("电话系统_第七题"))
+            {
+                TestMethod.Items.Clear();
+                TestMethod.Items.Add("综合测试");
                 TestVersion.Items.Clear();
                 TestVersion.Items.Add("版本一");
             }
