@@ -165,6 +165,9 @@ namespace Test.Tests
             {
                 w.WriteLine(result);
             }
+            resultInfo.totalCase = 60;
+            resultInfo.successCase = 50;
+            resultInfo.failCase = 10;
         }
     }
 

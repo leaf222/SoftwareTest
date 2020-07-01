@@ -15,20 +15,47 @@ namespace Test
 {
     public partial class Form1 : Form
     {
+        private Test.Tests.Test[,,] t;
+
+        enum MyTestName { 万年历 = 0, 三角形 = 1, 佣金问题_第二题 = 2, 销售问题_第八题 = 3};
+        enum MyTestMethod { 边界值 = 0, 等价类 = 1, 路径测试 = 2, 分支测试 = 3, 简单条件测试 = 4, 分支条件测试 = 5, 复杂条件测试 = 6 };
+        enum MyTestVersion { 版本一 = 0, 版本二 = 1};
+
+
         public Form1()
         {
             InitializeComponent();
+            t = new Test.Tests.Test[4,7,2];
         }
         
+        private void TestLoad()
+        {
+            t[0, 0, 0] = new CalenderBoundaryTest();
+            t[0, 0, 1] = new CalenderBoundaryTest2();
+            t[0, 1, 0] = new CalenderEquivalentTest();
+            t[0, 1, 1] = new CalenderEquivalentTest2();
+            t[1, 0, 0] = new TriangleBoundaryTest();
+            t[1, 0, 1] = new TriangleBoundaryTest2();
+            t[1, 1, 0] = new TriangleEquivalentTest();
+            t[1, 1, 1] = new TriangleEquivalentTest2();
+            t[2, 0, 0] = new ComissionBoundaryTest();
+            t[2, 0, 1] = new ComissionBoundaryTest2();
+            t[3, 2, 0] = new SaleSystemStatementTest();
+            t[3, 3, 0] = new SaleSystemBranchTest();
+            t[3, 4, 0] = new SaleSystemSimpleConditionTest();
+            t[3, 5, 0] = new SaleSystemDicisionConditionTest();
+            t[3, 6, 0] = new SaleSystemMultipleConditionTest();
+        }
+
         //为两个下拉框添加内容
         private void ComboBoxLoad()
         {
             TestName.Items.Add("万年历");
             TestName.Items.Add("三角形");
-            TestName.Items.Add("佣金问题（第二题）");
-            TestName.Items.Add("销售问题（第八题）");
-            TestVersion.Items.Add("1.0版本");
-            TestVersion.Items.Add("2.0版本");
+            TestName.Items.Add("佣金问题_第二题");
+            TestName.Items.Add("销售问题_第八题");
+            TestVersion.Items.Add("版本一");
+            TestVersion.Items.Add("版本二");
             TestMethod.Items.Add("边界值");
             TestMethod.Items.Add("等价类");
         }
@@ -41,8 +68,8 @@ namespace Test
                 TestMethod.Items.Add("边界值");
                 TestMethod.Items.Add("等价类");
                 TestVersion.Items.Clear();
-                TestVersion.Items.Add("1.0版本");
-                TestVersion.Items.Add("2.0版本");
+                TestVersion.Items.Add("版本一");
+                TestVersion.Items.Add("版本二");
             }
             if (TestName.SelectedItem.ToString().Equals("万年历"))
             {
@@ -50,18 +77,18 @@ namespace Test
                 TestMethod.Items.Add("边界值");
                 TestMethod.Items.Add("等价类");
                 TestVersion.Items.Clear();
-                TestVersion.Items.Add("1.0版本");
-                TestVersion.Items.Add("2.0版本");
+                TestVersion.Items.Add("版本一");
+                TestVersion.Items.Add("版本二");
             }
-            if (TestName.SelectedItem.ToString().Equals("佣金问题（第二题）"))
+            if (TestName.SelectedItem.ToString().Equals("佣金问题_第二题"))
             {
                 TestMethod.Items.Clear();
                 TestMethod.Items.Add("边界值");
                 TestVersion.Items.Clear();
-                TestVersion.Items.Add("1.0版本");
-                TestVersion.Items.Add("2.0版本");
+                TestVersion.Items.Add("版本一");
+                TestVersion.Items.Add("版本二");
             }
-            if (TestName.SelectedItem.ToString().Equals("销售问题（第八题）"))
+            if (TestName.SelectedItem.ToString().Equals("销售问题_第八题"))
             {
                 TestMethod.Items.Clear();
                 TestMethod.Items.Add("路径测试");
@@ -70,7 +97,7 @@ namespace Test
                 TestMethod.Items.Add("分支条件测试");
                 TestMethod.Items.Add("复杂条件测试");
                 TestVersion.Items.Clear();
-                TestVersion.Items.Add("1.0版本");
+                TestVersion.Items.Add("版本一");
             }
         }
 
@@ -82,6 +109,7 @@ namespace Test
         private void Form1_Load(object sender, EventArgs e)
         {
             ComboBoxLoad();
+            TestLoad();
         }
 
         //将测试与图表显示代码抽象为该函数
@@ -96,6 +124,22 @@ namespace Test
             SetChart(_test);
         }
 
+        private void TestTheTest(Test.Tests.Test _test)
+        {
+            _test.StartTest();
+            MessageBox.Show("测试已经完成");
+            SetChart(_test);
+        }
+
+        private Test.Tests.Test GetTestClass(string _testName, string _testMethod, string _testVersion)
+        {
+            MyTestName myTestName = (MyTestName)Enum.Parse(typeof(MyTestName), _testName);
+            MyTestMethod myTestMethod = (MyTestMethod)Enum.Parse(typeof(MyTestMethod), _testMethod);
+            MyTestVersion myTestVersion = (MyTestVersion)Enum.Parse(typeof(MyTestVersion), _testVersion);
+            Test.Tests.Test resultTest = t[(int)myTestName, (int)myTestMethod, (int)myTestVersion];
+            return resultTest;
+        }
+
         //点击开始测试按钮，根据问题和方法选定测试类进行测试
         private void StartButton_Click(object sender, EventArgs e)
         {
@@ -103,79 +147,9 @@ namespace Test
             {
                 MessageBox.Show("请选择测试类和测试方法以及测试版本");
             }
-            else if (TestName.SelectedItem.ToString().Equals("三角形") && TestMethod.SelectedItem.ToString().Equals("边界值") && TestVersion.SelectedItem.ToString().Equals("1.0版本"))
-            {
-                //待测-三角形边界值第一版
-                TestTheTest(7, 5, 2, new TriangleBoundaryTest());
-            }
-            else if (TestName.SelectedItem.ToString().Equals("三角形") && TestMethod.SelectedItem.ToString().Equals("边界值") && TestVersion.SelectedItem.ToString().Equals("2.0版本"))
-            {
-                TestTheTest(7, 7, 0, new TriangleBoundaryTest2());
-            }
-            else if (TestName.SelectedItem.ToString().Equals("三角形") && TestMethod.SelectedItem.ToString().Equals("等价类") && TestVersion.SelectedItem.ToString().Equals("1.0版本"))
-            {
-                //待测-三角形等价类第一版
-                TestTheTest(21, 19, 2, new TriangleEquivalentTest());
-            }
-            else if (TestName.SelectedItem.ToString().Equals("三角形") && TestMethod.SelectedItem.ToString().Equals("等价类") && TestVersion.SelectedItem.ToString().Equals("2.0版本"))
-            {
-                TestTheTest(21, 21, 0, new TriangleEquivalentTest2());
-            }
-            else if (TestName.SelectedItem.ToString().Equals("佣金问题（第二题）") && TestMethod.SelectedItem.ToString().Equals("边界值") && TestVersion.SelectedItem.ToString().Equals("1.0版本"))
-            {
-                TestTheTest(32, 28, 4, new ComissionBoundaryTest());
-            }
-            else if (TestName.SelectedItem.ToString().Equals("佣金问题（第二题）") && TestMethod.SelectedItem.ToString().Equals("边界值") && TestVersion.SelectedItem.ToString().Equals("2.0版本"))
-            {
-                //待测-佣金问题边界值第二版
-                TestTheTest(32, 32, 0, new ComissionBoundaryTest2());
-            }
-            else if (TestName.SelectedItem.ToString().Equals("万年历") && TestMethod.SelectedItem.ToString().Equals("边界值") && TestVersion.SelectedItem.ToString().Equals("1.0版本"))
-            {
-                TestTheTest(28, 23, 5, new CalenderBoundaryTest());
-            }
-            else if (TestName.SelectedItem.ToString().Equals("万年历") && TestMethod.SelectedItem.ToString().Equals("边界值") && TestVersion.SelectedItem.ToString().Equals("2.0版本"))
-            {
-                //待测-万年历边界值第二版
-                TestTheTest(28, 28, 0, new CalenderBoundaryTest2());
-            }
-            else if (TestName.SelectedItem.ToString().Equals("万年历") && TestMethod.SelectedItem.ToString().Equals("等价类") && TestVersion.SelectedItem.ToString().Equals("1.0版本"))
-            {
-                TestTheTest(60, 50, 10, new CalenderEquivalentTest());
-            }
-            else if (TestName.SelectedItem.ToString().Equals("万年历") && TestMethod.SelectedItem.ToString().Equals("等价类") && TestVersion.SelectedItem.ToString().Equals("2.0版本"))
-            {
-                //待测-万年历等价类第二版
-                TestTheTest(60, 60, 0, new CalenderEquivalentTest2());
-            }
-            else if (TestName.SelectedItem.ToString().Equals("销售问题（第八题）") && TestMethod.SelectedItem.ToString().Equals("路径测试") && TestVersion.SelectedItem.ToString().Equals("1.0版本"))
-            {
-                //待测-第八题路径测试
-                TestTheTest(3, 3, 0, new SaleSystemStatementTest());
-            }
-            else if (TestName.SelectedItem.ToString().Equals("销售问题（第八题）") && TestMethod.SelectedItem.ToString().Equals("分支测试") && TestVersion.SelectedItem.ToString().Equals("1.0版本"))
-            {
-                //待测-第八题分支测试
-                TestTheTest(4, 4, 0, new SaleSystemBranchTest());
-            }
-            else if (TestName.SelectedItem.ToString().Equals("销售问题（第八题）") && TestMethod.SelectedItem.ToString().Equals("简单条件测试") && TestVersion.SelectedItem.ToString().Equals("1.0版本"))
-            {
-                //待测-第八题简单条件测试
-                TestTheTest(3, 3, 0, new SaleSystemSimpleConditionTest());
-            }
-            else if (TestName.SelectedItem.ToString().Equals("销售问题（第八题）") && TestMethod.SelectedItem.ToString().Equals("分支条件测试") && TestVersion.SelectedItem.ToString().Equals("1.0版本"))
-            {
-                //待测-第八题分支条件测试
-                TestTheTest(4, 4, 0, new SaleSystemDicisionConditionTest());
-            }
-            else if (TestName.SelectedItem.ToString().Equals("销售问题（第八题）") && TestMethod.SelectedItem.ToString().Equals("复杂条件测试") && TestVersion.SelectedItem.ToString().Equals("1.0版本"))
-            {
-                //待测-第八题复杂条件测试
-                TestTheTest(12,12,0, new SaleSystemMultipleConditionTest());
-            }
             else
             {
-                MessageBox.Show("出错了！");
+                TestTheTest(GetTestClass(TestName.SelectedItem.ToString(), TestMethod.SelectedItem.ToString(), TestVersion.SelectedItem.ToString()));
             }
         }
 

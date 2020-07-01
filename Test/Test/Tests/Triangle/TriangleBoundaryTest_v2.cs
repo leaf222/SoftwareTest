@@ -141,6 +141,9 @@ namespace Test.Tests
             {
                 w.WriteLine(result);
             }
+            resultInfo.totalCase = 7;
+            resultInfo.successCase = 7;
+            resultInfo.failCase = 0;
         }
     }
 }

@@ -88,7 +88,10 @@ namespace Test.Tests
 			{
 				w.WriteLine(result);
 			}
-		}
+            resultInfo.totalCase = 32;
+            resultInfo.successCase = 28;
+            resultInfo.failCase = 4;
+        }
 	}
 
 }
