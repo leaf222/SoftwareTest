@@ -64,6 +64,9 @@
     <Compile Include="Tests\Calender\CalenderEquivalentTest_v2.cs" />
     <Compile Include="Tests\Comission\ComissionBoundaryTest.cs" />
     <Compile Include="Tests\Comission\ComissionBoundaryTest_v2.cs" />
+    <Compile Include="Tests\PhoneSystem\PhoneSystem.cs" />
+    <Compile Include="Tests\PhoneSystem\PhoneSystemBranchTest.cs" />
+    <Compile Include="Tests\PhoneSystem\PhoneSystemEquivalentTest.cs" />
     <Compile Include="Tests\SaleSystem\SaleSystemBranchTest.cs" />
     <Compile Include="Tests\SaleSystem\SaleSystemDicisionConditionTest.cs" />
     <Compile Include="Tests\SaleSystem\SaleSystemMultipleConditionTest.cs" />
@@ -86,6 +89,48 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="mydata\.DS_Store" />
+    <None Include="mydata\Calender\Calender_Boundary_Expected_Result.json" />
+    <None Include="mydata\Calender\Calender_Boundary_Result.json" />
+    <None Include="mydata\Calender\Calender_Boundary_Result2.json" />
+    <None Include="mydata\Calender\Calender_Boundary_Testcase.json" />
+    <None Include="mydata\Calender\Calender_Equivalent_Expected_Result.json" />
+    <None Include="mydata\Calender\Calender_Equivalent_Result.json" />
+    <None Include="mydata\Calender\Calender_Equivalent_Result2.json" />
+    <None Include="mydata\Calender\Calender_Equivalent_Testcase.json" />
+    <None Include="mydata\Comission\Comission_Boundary_Expected_Result.json" />
+    <None Include="mydata\Comission\Comission_Boundary_Result.json" />
+    <None Include="mydata\Comission\Comission_Boundary_Testcase.json" />
+    <None Include="mydata\PhoneSystem\PhoneSystem_Equivalent_Expected_Result.json" />
+    <None Include="mydata\PhoneSystem\PhoneSystem_Equivalent_Result.json" />
+    <None Include="mydata\PhoneSystem\PhoneSystem_Equivalent_Testcase.json" />
+    <None Include="mydata\SaleSystem\SaleSystem_Branch_Expected_Result.json" />
+    <None Include="mydata\SaleSystem\SaleSystem_Branch_Result.json" />
+    <None Include="mydata\SaleSystem\SaleSystem_Branch_Testcase.json" />
+    <None Include="mydata\SaleSystem\SaleSystem_DicisionCondition_Expected_Result.json" />
+    <None Include="mydata\SaleSystem\SaleSystem_DicisionCondition_Result.json" />
+    <None Include="mydata\SaleSystem\SaleSystem_DicisionCondition_Testcase.json" />
+    <None Include="mydata\SaleSystem\SaleSystem_MultipleCondition_Expected_Result.json" />
+    <None Include="mydata\SaleSystem\SaleSystem_MultipleCondition_Result.json" />
+    <None Include="mydata\SaleSystem\SaleSystem_MultipleCondition_Testcase.json" />
+    <None Include="mydata\SaleSystem\SaleSystem_SimpleCondition_Expected_Result.json" />
+    <None Include="mydata\SaleSystem\SaleSystem_SimpleCondition_Result.json" />
+    <None Include="mydata\SaleSystem\SaleSystem_SimpleCondition_Testcase.json" />
+    <None Include="mydata\SaleSystem\SaleSystem_Statement_Expected_Result.json" />
+    <None Include="mydata\SaleSystem\SaleSystem_Statement_Result.json" />
+    <None Include="mydata\SaleSystem\SaleSystem_Statement_Testcase.json" />
+    <None Include="mydata\Triangle\.DS_Store" />
+    <None Include="mydata\Triangle\Triangle_Boundary_Expected_Result.json" />
+    <None Include="mydata\Triangle\Triangle_Boundary_Result.json" />
+    <None Include="mydata\Triangle\Triangle_Boundary_Result_v2.json" />
+    <None Include="mydata\Triangle\Triangle_Boundary_Testcase.json" />
+    <None Include="mydata\Triangle\Triangle_Equivalent_Expected_Result.json" />
+    <None Include="mydata\Triangle\Triangle_Equivalent_Result.json" />
+    <None Include="mydata\Triangle\Triangle_Equivalent_Result_v2.json" />
+    <None Include="mydata\Triangle\Triangle_Equivalent_Testcase.json" />
+    <None Include="mydata\Triangle\三角形测试用例.md" />
+    <None Include="mydata\测试模板.xlsx" />
+    <None Include="mydata\测试用例.xls" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
