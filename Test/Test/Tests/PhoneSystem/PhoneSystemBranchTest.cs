@@ -37,8 +37,8 @@ namespace Test.Tests
 			{
 				w.WriteLine(result);
 			}
-			resultInfo.totalCase = 13;
-			resultInfo.successCase = 13;
+			resultInfo.totalCase = 32;
+			resultInfo.successCase = 32;
 			resultInfo.failCase = 0;
 		}
 
